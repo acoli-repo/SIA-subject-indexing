@@ -1,0 +1,43 @@
+Datenbasis sind PDFs in acoli-training
+
+Verwendung :
+1.) Dokument und Keywortvektoren bauen für gegebene Fasttext embedding Datei in run.properties
+2.) Distanzen für gegebenes PDF ausgeben
+
+java options :
+-Xmx4g -Xss5m
+
+Document languages :
+de	800
+no	1
+ru	1
+ast	3
+pt	63
+hr	254
+fr	11
+ht	2
+br	19
+sk	3
+sl	3
+ga	1
+so	1
+ca	9
+sv	1
+gl	5
+ms	2
+mt	2
+en	742
+is	2
+it	2
+an	1
+zh	5
+es	2
+et	2
+cs	22
+eu	1
+vi	1
+cy	1
+ro	2
+da	2
+tr	43
+nl	5
