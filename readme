@@ -1,5 +1,16 @@
 Datenbasis sind PDFs in acoli-training
 
+Angenommen wird folgende Projektstruktur :
+
+PdfRootDir
+         \
+         directory-1
+         directory-2
+         ..
+         directory-n
+         
+
+
 Verwendung :
 1.) Dokument und Keywortvektoren bauen für gegebene Fasttext embedding Datei in run.properties
 2.) Distanzen für gegebenes PDF ausgeben
