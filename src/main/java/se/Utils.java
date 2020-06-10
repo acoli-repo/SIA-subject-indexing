@@ -10,6 +10,8 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -410,5 +412,38 @@ public static void main(String[] args) {
     utils.detectLanguage("Para el cálculo del coseno suave, se introduce la matriz s que contiene la similitud entre las características. Se puede calcular utilizando la distancia Levenshtein u otras medidas de similitud, por ejemplo, diversas medidas de similitud de WordNet. Luego solo se multiplica por esta matriz.");
 }
 
+/**
+ * Read keyword mapping file
+ * @param keywordMapFile
+ * @return 
+ * @return keyword map
+ */
+public static HashMap<String, ArrayList<String>> readKeywordMap(File keywordMapFile) {
+		
+	HashMap<String, ArrayList<String>> keywordmap = new HashMap<String, ArrayList<String>>();
+	
+	String docFolder;
+	String keyword;
+	
+	// read keyword_map_file and make keywordmap
+	List<String> lines = Utils.readFileLines(keywordMapFile);
+	for (String line : lines) {
+		String[] cols = line.split("\t");
+		docFolder = cols[0].replace("\"", "");
+		keyword = cols[2].replace("\"", "");
+		if(!keywordmap.containsKey(keyword)) {
+			ArrayList<String> tmp = new ArrayList<String>();
+			tmp.add(docFolder);
+			keywordmap.put(keyword, tmp);
+		} else {
+			ArrayList<String> tmp = keywordmap.get(keyword);
+			tmp.add(docFolder);
+			keywordmap.put(keyword, tmp);
+		}
+	}
+	
+	return keywordmap;
+	}
+	
 
 }

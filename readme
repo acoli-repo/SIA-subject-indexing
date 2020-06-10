@@ -21,6 +21,7 @@ PdfTrainingRootDir=/path/to/PdfRootDir
 KeywordMappingFile=/path/to/remap-indexTerms/subjects-extract.tsv
 KeywordVectorDir=/path/to/result/directory/for/keyvectors
 EmbeddingsDir=/path/to/fasttext/embeddings
+KeywordMinDocSupport=20
 
 
 Verwendung : (Export java options : -Xmx4g -Xss5m)

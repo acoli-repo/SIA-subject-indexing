@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -177,31 +178,15 @@ public class Setup  {
 	}
 	
 	
+
 	public void computeKeywordVectors(File rootDir, File keywordMapFile) {
 		
-		HashMap<String, ArrayList<String>> keywordmap = new HashMap<String, ArrayList<String>>();
+		
 		int good=0;
 		int bad=0;
-		String docFolder;
-		String keyword;
 		
-		// read keyword_map_file and make keywordmap
-		List<String> lines = Utils.readFileLines(keywordMapFile);
-		for (String line : lines) {
-			String[] cols = line.split("\t");
-			docFolder = cols[0];
-			keyword = cols[2];
-			if(!keywordmap.containsKey(keyword)) {
-				ArrayList<String> tmp = new ArrayList<String>();
-				tmp.add(docFolder);
-				keywordmap.put(keyword, tmp);
-			} else {
-				ArrayList<String> tmp = keywordmap.get(keyword);
-				tmp.add(docFolder);
-				keywordmap.put(keyword, tmp);
-			}
-		}
-		
+		HashMap<String, ArrayList<String>> keywordmap = Utils.readKeywordMap(keywordMapFile);
+			
 		boolean success;
 		for (String k : keywordmap.keySet()) {
 			

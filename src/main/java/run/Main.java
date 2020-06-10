@@ -75,6 +75,7 @@ public class Main {
 		System.out.println("KeywordMappingFile\t"+properties.getProperty("KeywordMappingFile"));
 		System.out.println("KeywordVectorDir\t"+properties.getProperty("KeywordVectorDir"));
 		System.out.println("EmbeddingsDir\t\t"+properties.getProperty("EmbeddingsDir"));
+		System.out.println("KeywordMinDocSupport\t\t"+properties.getProperty("KeywordMinDocSupport"));
 		System.out.println();
 
 		
