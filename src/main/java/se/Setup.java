@@ -147,16 +147,21 @@ public class Setup  {
 					continue;
 				}
 				else {
-					// Check if embeddings contain token
 					
-					//if (!lang.equals("de") || NLPUtils.isNoun(t)) {
+					t = t.trim();
+					
+					//filter NP if (!lang.equals("de") || NLPUtils.isNoun(t)) {}
+					if (!vocabulary.contains(t)) {
+						
+						vocabulary.add(t);
+						
+						// Check if embeddings contain token
 						if (emb.getWords().keySet().contains(t)){
 							documentVector = 
 								Utils.vectorSum(documentVector, emb.getWordVectors()[emb.getWords().get(t)]);
 							matched++;
 						}
-					//}
-					vocabulary.add(t.trim());
+					}
 				}
 				
 			}

@@ -69,7 +69,7 @@ public class KeywordDetection {
 			System.out.println("Top 100");
 			for (Entry<String, Double> k : sortDistances(distances)) {
 				System.out.println(i+"\t"+k.getKey()+"\n"+k.getValue());
-				if (i++ > limit) return;
+				if (i++ > limit) break;
 			}
 			
 			// Show original keywords (only for testing training PDFs)
