@@ -194,11 +194,13 @@ public FasttextEmbeddings readFasttextEmbedings(File file) {
 	        	// Read line count and dimensions
 	        	lineCount = Integer.parseInt(line.split(" ")[0].trim());
 	        	dimensions = Integer.parseInt(line.split(" ")[1].trim());
+	        	String language = file.getName().split("\\.")[2];
 	        	System.out.println("lines : "+lineCount);
 	        	System.out.println("dimensions : "+dimensions);
-	        	
-	        	embeddings = new FasttextEmbeddings(file.getName(), lineCount, dimensions);
-	        	
+	        	System.out.println("language : "+language+" (check language and adjust code if wrong)");
+
+	        	embeddings = new FasttextEmbeddings(file.getName(), lineCount, dimensions, language);
+	        	System.out.println("dimensions : "+dimensions);
 	        	
 	        } else {
 	        	

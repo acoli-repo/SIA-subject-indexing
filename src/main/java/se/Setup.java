@@ -148,11 +148,14 @@ public class Setup  {
 				}
 				else {
 					// Check if embeddings contain token
-					if (emb.getWords().keySet().contains(t)){
-						documentVector = 
-							Utils.vectorSum(documentVector, emb.getWordVectors()[emb.getWords().get(t)]);
-						matched++;
-					}
+					
+					//if (!lang.equals("de") || NLPUtils.isNoun(t)) {
+						if (emb.getWords().keySet().contains(t)){
+							documentVector = 
+								Utils.vectorSum(documentVector, emb.getWordVectors()[emb.getWords().get(t)]);
+							matched++;
+						}
+					//}
 					vocabulary.add(t.trim());
 				}
 				

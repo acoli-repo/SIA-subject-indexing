@@ -34,7 +34,7 @@ java -jar subject-indexing-0.0.1-SNAPSHOT-with-dp.jar -c run.properties -i
 1.b Als Ergebnisse werden die Dokumentvektoren, eine Textversion des PDF und das Vokabular des PDF als Dateien
 im jeweiligen PDF Ordner angelegt. Ausserdem werden die Keywortvektoren erzeugt.
 
-1.c Da alle Embeddingsdateien grösser als 4GB sind kann man Schritt 1. wiederholt mit verschiedenen Sprachembeddings
+1.c Da Embeddingsdateien grösser als 4GB sein können kann man Schritt 1. wiederholt mit verschiedenen Sprachembeddings
 durchlaufen lassen. Die Keywortvektoren werden automatisch aktualisiert.
 
 1.d Jeder Keyword-Vektor hat im Dateinamen am Ende die Zahl der PDF-Dokumente aus denen er aufgebaut ist
@@ -49,6 +49,10 @@ java -jar subject-indexing-0.0.1-SNAPSHOT-with-dp.jar -c run.properties -k -d di
 
 Es werden die Cosinus-Distanzen der besten 100 Keywords ausgegeben.
 
+Resourcen :
+https://github.com/facebookresearch/MUSE
+https://fasttext.cc/docs/en/english-vectors.html
+https://stanfordnlp.github.io/CoreNLP/pos.html
 
 Übersicht der Sprachen in acoli-training
 

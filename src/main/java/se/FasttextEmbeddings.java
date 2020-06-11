@@ -18,12 +18,12 @@ public class FasttextEmbeddings {
 	int vectorDimensions = 0;
 	
 	
-	FasttextEmbeddings(String _label, int _vocabularySize, int _vectorDimensions) {
+	FasttextEmbeddings(String _label, int _vocabularySize, int _vectorDimensions, String _language) {
 		
 		label = _label;
 		vocabularySize = _vocabularySize;
 		vectorDimensions = _vectorDimensions;
-		language = _label.split("\\.")[1];
+		language = _language;
 		words = new HashMap<String, Integer>();
 		wordVectors =  new float[vocabularySize][vectorDimensions];
 	}
