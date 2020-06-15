@@ -5,11 +5,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Pattern;
+
+import org.apache.cxf.helpers.FileUtils;
 
 import com.google.common.io.Files;
 import com.optimaize.langdetect.DetectedLanguage;
@@ -96,9 +97,20 @@ public class Setup  {
 
 		List<File> processedPdfFiles = new ArrayList<File>();
 		
+		// Delete files in pdf directory
 		for (File file : dir.listFiles()) {
-						
-			if (!Files.getFileExtension(file.getName()).toLowerCase().equals("pdf")) continue;
+			String fileExt = Files.getFileExtension(file.getName()).toLowerCase();
+			if (!fileExt.equals("pdf")) {
+				FileUtils.delete(file);
+			}
+		}
+		
+		for (File file : dir.listFiles()) {
+					
+			String fileExt = Files.getFileExtension(file.getName()).toLowerCase();
+			if (!fileExt.equals("pdf")) {
+				continue;
+			}
 			
 			System.out.println(file.getAbsolutePath());
 
@@ -138,18 +150,21 @@ public class Setup  {
 			
 			// Compute vocabulary of text and build document vector
 			HashSet<String> vocabulary = new HashSet<String>();
+			HashSet<String> matchedVocab = new HashSet<String>();
+
 			int matched=0;
 			double[] documentVector = new double[emb.vectorDimensions];
 			
 			for (String t : text.split(" ")) {
+				
+				t = t.trim();
+				
 				if(t.length() == 1 || expattern.matcher(t).find()) {
 					System.out.println("filtering token "+t);
 					continue;
 				}
 				else {
-					
-					t = t.trim();
-					
+						
 					//filter NP if (!lang.equals("de") || NLPUtils.isNoun(t)) {}
 					if (!vocabulary.contains(t)) {
 						
@@ -159,6 +174,7 @@ public class Setup  {
 						if (emb.getWords().keySet().contains(t)){
 							documentVector = 
 								Utils.vectorSum(documentVector, emb.getWordVectors()[emb.getWords().get(t)]);
+							matchedVocab.add(t);
 							matched++;
 						}
 					}
@@ -170,8 +186,13 @@ public class Setup  {
 			
 			// Write vocabulary file
 			System.out.println("Vocabulary size : "+vocabulary.size());
-			File vocFile = new File(dir,fnameWithoutExtension+"-vocab.txt");
+			File vocFile = new File(dir,fnameWithoutExtension+"-vocab_"+vocabulary.size()+"_.txt");
 			Utils.writeFile(vocFile, new ArrayList<String>(vocabulary));
+			
+			// Write matched vocabulary file
+			System.out.println("Matched vocabulary size : "+matchedVocab.size());
+			File matchedVocFile = new File(dir,fnameWithoutExtension+"-matched_"+matchedVocab.size()+"_.txt");
+			Utils.writeFile(matchedVocFile, new ArrayList<String>(matchedVocab));
 			
 			// Write document vector file
 			if (matched > 0) {
