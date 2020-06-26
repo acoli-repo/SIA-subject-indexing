@@ -12,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -396,23 +397,7 @@ public static File getKeywordVectorFile(String keyword, String KeywordVectorDir,
 
 
 
-public static void main(String[] args) {	
 
-	System.out.println(Files.getFileExtension("hello.pdf"));
-	Pattern expattern = Pattern.compile(".*[0-9;!?\\[\\]\\/\\(\\)\\*@]+");
-	String text = "abads)dfs";
-	System.out.println(expattern.matcher(text).find());
-	
-	Utils utils = new Utils();
-	//File fasttextFile = new File("/u02/oradata/tmp/cc.en.300.vec");
-	//utils.readFasttextEmbedings(fasttextFile);*/
-	
-	utils.detectLanguage("Kosinus-Ähnlichkeit ist ein Maß für die Ähnlichkeit zweier Vektoren. Dabei wird der Kosinus des Winkels zwischen beiden Vektoren bestimmt. Der Kosinus des eingeschlossenen Winkels Null ist eins; für jeden anderen Winkel ist der Kosinus des eingeschlossenen Winkels kleiner als eins.");
-	utils.detectLanguage("These bounds apply for any number of dimensions, and the cosine similarity is most commonly used in high-dimensional positive spaces. For example, in information retrieval and text mining, each term is notionally assigned a different dimension and a document is characterised by a vector where the value in each dimension corresponds to the number of times the term appears in the document");
-    utils.detectLanguage("La similarité cosinus est fréquemment utilisée en tant que mesure de ressemblance entre deux documents. Il pourra s'agir de comparer les textes issus d'un corpus dans une optique de classification (regrouper tous les documents relatifs à une thématique particulière), ou de recherche d'information (dans ce cas, un document vectorisé est constitué par les mots de la requête et est comparé par mesure de cosinus de l'angle avec des vecteurs correspondant à tous les documents présents dans le corpus");
-    utils.detectLanguage("Per rendere più efficace il confronto, in genere, si eliminano le parole più corte e molto frequenti che servono a costruire le frasi, come e, che, ma, quindi e altre, che possono essere identificate velocemente con un'euristica appropriata. È possibile anche usare la similarità per riconoscere la lingua in cui è scritto un testo, senza ovviamente ignorare le parole corte e frequenti");
-    utils.detectLanguage("Para el cálculo del coseno suave, se introduce la matriz s que contiene la similitud entre las características. Se puede calcular utilizando la distancia Levenshtein u otras medidas de similitud, por ejemplo, diversas medidas de similitud de WordNet. Luego solo se multiplica por esta matriz.");
-}
 
 /**
  * Read keyword mapping file
@@ -447,5 +432,152 @@ public static HashMap<String, ArrayList<String>> readKeywordMap(File keywordMapF
 	return keywordmap;
 	}
 	
+
+/**
+ * F1-Score value
+ * @param tp true positives
+ * @param fp false positives
+ * @param fn false negatives
+ * @return
+ */
+public static float f1Score(int tp, int fp, int fn) {
+	float pr = precision(tp, fp);
+	float re = recall(tp, fn);
+	return (2* (pr * re) / (pr + re));
+}
+
+/**
+ * Recall value
+ * @param tp true positives
+ * @param fn false negatives
+ * @return
+ */
+private static float recall(int tp, int fn) {
+	return (tp / (tp+fn));
+}
+
+
+/**
+ * Precision value
+ * @param tp true positives
+ * @param fp false positives
+ * @return
+ */
+private static float precision(int tp, int fp) {
+	return (tp / (tp+fp));
+}
+
+
+/**
+ * Make a bipartition of data identifiers. Return a map where training data will have 
+ * value 0, and evaluation data will have value 1
+ * @param dataIds Set of data identifiers
+ * @param evaluationPortion Amount of dataIds (in percent) used for evaluation (e.g. 10 means 10 %)
+ * @return bipartition
+ */
+private static HashMap<String, Integer> partitionData(ArrayList<String> dataIds, int evaluationPortion) {
+	
+	if (evaluationPortion > 99) return null;
+	
+	HashMap<String,Integer> map = new HashMap<String,Integer>();
+	int evaluationNumber = Math.floorDiv(dataIds.size() * evaluationPortion, 100);
+	
+	int i = 0;
+	
+	// Randomly select evaluation data
+	while (i < evaluationNumber) {
+		
+		int index = (int) Math.floor(Math.random()*dataIds.size());
+		map.put(dataIds.get(index), 1);
+		dataIds.remove(index);
+		i++;
+	}
+	
+	// Add training data to map
+	for (String id : dataIds) {
+		map.put(id, 0);
+	}
+	
+	return map;
+}
+
+
+/**
+ * Write data partition map
+ */
+public static void writeDataPartition(File dataPartitionFile, HashMap<String,Integer> map) {
+	
+	// serialize array
+	try {
+	     FileOutputStream f_out = new FileOutputStream(dataPartitionFile);
+	     ObjectOutputStream obj_out = new ObjectOutputStream (f_out);
+	     obj_out.writeObject (map);
+	     obj_out.close();
+	
+	} catch (IOException e) {
+		e.printStackTrace();
+	}
+}
+
+/** Read data partition map
+ */
+public static HashMap<String, Integer> readDataPartition (File map) {
+	
+	// de-serialize array
+	try {
+		FileInputStream f_in = new FileInputStream(map);
+		ObjectInputStream obj_in = new ObjectInputStream (f_in);
+		HashMap<String, Integer> tmp = (HashMap<String, Integer>)obj_in.readObject();
+		obj_in.close();
+		return tmp;
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+	return null;
+}
+
+
+public static void main(String[] args) {	
+
+	System.out.println(Files.getFileExtension("hello.pdf"));
+	Pattern expattern = Pattern.compile(".*[0-9;!?\\[\\]\\/\\(\\)\\*@]+");
+	String text = "abads)dfs";
+	System.out.println(expattern.matcher(text).find());
+	
+	Utils utils = new Utils();
+	//File fasttextFile = new File("/u02/oradata/tmp/cc.en.300.vec");
+	//utils.readFasttextEmbedings(fasttextFile);*/
+	
+	utils.detectLanguage("Kosinus-Ähnlichkeit ist ein Maß für die Ähnlichkeit zweier Vektoren. Dabei wird der Kosinus des Winkels zwischen beiden Vektoren bestimmt. Der Kosinus des eingeschlossenen Winkels Null ist eins; für jeden anderen Winkel ist der Kosinus des eingeschlossenen Winkels kleiner als eins.");
+	utils.detectLanguage("These bounds apply for any number of dimensions, and the cosine similarity is most commonly used in high-dimensional positive spaces. For example, in information retrieval and text mining, each term is notionally assigned a different dimension and a document is characterised by a vector where the value in each dimension corresponds to the number of times the term appears in the document");
+    utils.detectLanguage("La similarité cosinus est fréquemment utilisée en tant que mesure de ressemblance entre deux documents. Il pourra s'agir de comparer les textes issus d'un corpus dans une optique de classification (regrouper tous les documents relatifs à une thématique particulière), ou de recherche d'information (dans ce cas, un document vectorisé est constitué par les mots de la requête et est comparé par mesure de cosinus de l'angle avec des vecteurs correspondant à tous les documents présents dans le corpus");
+    utils.detectLanguage("Per rendere più efficace il confronto, in genere, si eliminano le parole più corte e molto frequenti che servono a costruire le frasi, come e, che, ma, quindi e altre, che possono essere identificate velocemente con un'euristica appropriata. È possibile anche usare la similarità per riconoscere la lingua in cui è scritto un testo, senza ovviamente ignorare le parole corte e frequenti");
+    utils.detectLanguage("Para el cálculo del coseno suave, se introduce la matriz s que contiene la similitud entre las características. Se puede calcular utilizando la distancia Levenshtein u otras medidas de similitud, por ejemplo, diversas medidas de similitud de WordNet. Luego solo se multiplica por esta matriz.");
+ 
+    ArrayList<String> data = new ArrayList();
+	data.add("1");
+	data.add("2");
+	data.add("3");
+	data.add("4");
+	data.add("5");
+	data.add("6");
+	data.add("7");
+	data.add("8");
+	data.add("9");
+	data.add("10");
+	
+	HashMap<String, Integer> y = partitionData(data, 50);
+	
+	File partitionFile = new File("/tmp/partition.txt");
+	//writeDataPartition(partitionFile, y);
+	
+	HashMap<String, Integer> z = readDataPartition(partitionFile);
+	
+	
+	for(String key : z.keySet()) {
+		System.out.println(key+"\t"+z.get(key));
+	}
+    
+}
 
 }
