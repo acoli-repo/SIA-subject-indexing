@@ -14,10 +14,9 @@ import java.util.Map.Entry;
  */
 public class DocumentResult {
 
-	int truePos = 0;
-	int falsePos = 0;
-	int trueNeg = 0;
-	int falseNeg = 0;
+	private int truePos = 0;
+	private int falsePos = 0;
+	private int falseNeg = 0;
 	private ArrayList<Entry<String, Double>> computedKeywords;
 	private HashSet<String> assignedKeywords;
 	
@@ -30,32 +29,32 @@ public class DocumentResult {
 	
 		this.computedKeywords = DocumentResult.sortDistances(foundKeywords);
 		this.assignedKeywords = assignedKeywords;
-		this.checkBestFoundKeywordMatches();
 	}
-	
-	
+
+
 	/**
-	 * 
+	 * Evaluate the top k computed keywords for a document
+	 * @param k
+	 * @return Return true if at least one keyword matched the manually assigned keywords
 	 */
-	private void checkBestFoundKeywordMatches() {
+	public boolean atLeastOneOfTheTopKComputedKeywordsMatchted(int k) {
 		
-		if (this.isbestFoundKeywordMatched()) {
-			truePos=1;
-			falsePos=0;
-			falseNeg=0;
-		} else {
-			truePos=0;
-			falsePos=1;
-			falseNeg=0;
+		if (computedKeywords.size() == 0 || k < 1) return false;
+		
+		int i = 0;
+		while (i++ < k) {
+			String keyword = extractKeywordFromFileName(computedKeywords.get(i).getKey());
+			if (assignedKeywords.contains(keyword)) {
+				truePos=1;
+				falsePos=0;
+				return true;
+			}
 		}
+		truePos=0;
+		falsePos=1;
+		return false;		
 	}
-
-
-	public boolean isbestFoundKeywordMatched() {
-		
-		if (computedKeywords.size() == 0) return false;
-		return assignedKeywords.contains(extractKeywordFromFileName(computedKeywords.get(0).getKey()));
-	}
+	
 	
 	private String extractKeywordFromFileName(String kfn) {
 		
@@ -118,6 +117,31 @@ public class DocumentResult {
         }));
 		
 		return y;
+	}
+
+
+	public int getTruePositives() {
+		return truePos;
+	}
+
+
+	public int getFalsePositives() {
+		return falsePos;
+	}
+
+
+	public int getFalseNegatives() {
+		return falseNeg;
+	}
+
+
+	public ArrayList<Entry<String, Double>> getComputedKeywords() {
+		return computedKeywords;
+	}
+
+
+	public HashSet<String> getAssignedKeywords() {
+		return assignedKeywords;
 	}
 	
 	

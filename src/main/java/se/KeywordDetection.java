@@ -55,31 +55,12 @@ public class KeywordDetection {
 			// Run keyword detection for evaluation document
 			DocumentResult dr = computeKeywordsForDoc(documentFolder, keywordVectorDir, setup);
 			dr.printResult();
-			System.out.println(dr.isbestFoundKeywordMatched());
 			results.add(dr);
 		}
 		
 		
-		int i = 0;
-		float precision = 0;
-		float recall = 0;
-		float f1Score = 0;
-		int truePositives = 0;
-		for (DocumentResult r : results) {
-			
-			truePositives+=r.truePos;
-			precision+=r.getPrecision();
-			recall=r.getRecall();
-			f1Score=r.getF1Score();
-			i++;
-		}
-		
-		System.out.println("Tested documents : "+i);
-		System.out.println("Test if the best computed keyword for a document matched at least one of the manually assigned keywords");
-		System.out.println("True positives : "+truePositives);
-		System.out.println("Precision : "+precision/i);
-		//System.out.println("Recall : "+recall/i);
-		//System.out.println("F1Score : "+f1Score/i);
+		Evaluator evaluator = new Evaluator(results);
+		evaluator.evaluateTopKComputedKeywords(5);
 	}
 	
 	
