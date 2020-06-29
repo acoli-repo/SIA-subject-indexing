@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 import org.apache.cxf.helpers.FileUtils;
@@ -37,10 +38,12 @@ public class Setup  {
 	    
 		try {
 			// Read properties with file locations
-			File pdfTrainingRootDir = new File(prop.getProperty("PdfTrainingRootDir"));
+			File documentRootDir = new File(prop.getProperty("DocumentRootDir"));
 			File keywordMappingFile = new File(prop.getProperty("KeywordMappingFile"));
 			File embeddingsDir = new File(prop.getProperty("EmbeddingsDir"));
+			File dataPartitionFile = new File(prop.getProperty("DataPartitionFile"));
 			File keywordVectorDir = new File(prop.getProperty("KeywordVectorDir"));
+			int evaluationPartitionSize = Integer.parseInt(prop.getProperty("evaluationPortion"));
 
 			if (!keywordVectorDir.exists()) {
 				try {
@@ -63,8 +66,13 @@ public class Setup  {
 			
 			if (init){
 				
-				computeDocumentVectors(pdfTrainingRootDir);
-				computeKeywordVectors(pdfTrainingRootDir, keywordMappingFile);
+				
+				// Partition data
+				HashMap<String, Integer> map = makeDataPartition(documentRootDir, evaluationPartitionSize);
+				Utils.writeDataPartition(dataPartitionFile, map);
+				
+				computeDocumentVectors(documentRootDir, map);
+				computeKeywordVectors(documentRootDir, keywordMappingFile, map);
 				
 				System.out.println("Document languages :");
 				for (String lang : languages.keySet()) {
@@ -77,25 +85,118 @@ public class Setup  {
 		}
 	}
 	
+	/**
+	 * Divide all data into training and evaluation data. Data for not supported languages (no embedding available is
+	 * discarded automatically
+	 * @param rootDir
+	 * @param evaluationPartitionSize
+	 * @return A map with directory names relative to rootdir where values (0/1) indicate 0=training data, 1=evaluation data
+	 */
+	public HashMap<String, Integer> makeDataPartition(File rootDir, int evaluationPartitionSize) {
+		
+		System.out.println("makeDataPartition");
+		ArrayList<String> dataIds = new ArrayList<String>();
+		
+		for (File x : rootDir.listFiles()) {
+			System.out.println(x.getAbsolutePath());
+			if (x.isDirectory()) {
+				
+				boolean foundTrainingPDF = false;
+				for (File file : x.listFiles()) {
+					
+					String fileExt = Files.getFileExtension(file.getName()).toLowerCase();
+					if (fileExt.equals("pdf")) {
+				
+						TextConversionResult tar = convertPdf2Text(file, loadedEmbeddings.keySet());
+						if (tar != null) {
+							foundTrainingPDF = true;
+							break;
+						}
+					}
+				}
+				if (foundTrainingPDF) dataIds.add(x.getName());
+			}
+		}
+		
+		return Utils.partitionData(dataIds, evaluationPartitionSize);
+	}
 	
-	public void computeDocumentVectors(File rootDir) {
+	
+	public void computeDocumentVectors(File rootDir, HashMap<String, Integer> dataPartition) {
 		
 		System.out.println("computeDocumentVectors");
 		
 		int i = 1;
+		for (String x : dataPartition.keySet()) {
+			File dir = new File (rootDir,x);
+			System.out.println(i+" "+dir.getName());i++;
+			computeDocumentVector(dir, dataPartition.get(x) == Utils.EVALUATION);
+		}
+		
+		
+		/*int i = 1;
 		for (File x : rootDir.listFiles()) {
 			System.out.println(x.getAbsolutePath());
 			if (x.isDirectory()) {
 				System.out.println(i+" "+x.getName());i++;
 				computeDocumentVector(x);
 			}
-		}
+		}*/
+	}
+	
+	/**
+	 * Convert pdf file to text and thereby detect language of text (TODO Multiple languages not supported).
+	 * Returns null if text extraction failed or no language could be detected
+	 * @param file
+	 * @param allowedLanguages ISO639-1 / ISO639-3 codes of allowed languages
+	 * @return TextConversionResult or null if extracted text is empty or no language was detected
+	 */
+	public TextConversionResult convertPdf2Text(File file, Set<String> allowedLanguages) {
+		
+		TextConversionResult tar = new TextConversionResult();
+		
+		// Convert pdf files -> text
+		String fnameWithoutExtension = Files.getNameWithoutExtension(file.getName());
+		File textFile = new File(file.getParent(), fnameWithoutExtension+".txt");
+		String cmd = "pdftotext "+file.getAbsolutePath()+" "+textFile.getAbsolutePath();
+		String error = Utils.runShellCmd(cmd);
+		if (!error.isEmpty()) return null;
+		
+		// Read generated text file
+		String text = Utils.readFile(textFile);
+		
+		// Replaces escape character with space 
+		text = text.replaceAll("\n", " "); 
+		text = text.replaceAll("--", ""); 
+		text = text.replaceAll("[,.:]","");
+		
+		// Detect text language
+		List<DetectedLanguage> result = utils.detectLanguage(text.substring(0, Math.min(100, text.length()-1)));
+		if (result.size() == 0) return null; // skip file if no language was detected
+		String lang = result.get(0).getLocale().getLanguage();
+		System.out.println("Found language : "+ lang+" in file "+file.getAbsolutePath());
+		
+		if (!allowedLanguages.isEmpty() && !allowedLanguages.contains(lang)) return null;
+		
+		// Save result
+		tar.setText(text);
+		tar.getLanguages().add(lang);
+		return tar;
 	}
 	
 	
-	public List<File> computeDocumentVector(File dir) {
+	
+	/**
+	 * Compute document vector for PDF in dir. If more than one language is considered then multiple resulting document 
+	 * vectors are possible (not implemented).
+	 * @param dir
+	 * @param isEvaluationData
+	 * @return
+	 */
+	public List<File> computeDocumentVector(File dir, boolean isEvaluationData) {
 
 		List<File> processedPdfFiles = new ArrayList<File>();
+		String lang="";
 		
 		// Delete files in pdf directory
 		for (File file : dir.listFiles()) {
@@ -105,36 +206,33 @@ public class Setup  {
 			}
 		}
 		
+		// stop here because the data is for evaluation
+		if (isEvaluationData) return null;
+		
+	
+		// Start processing of document vector here
 		for (File file : dir.listFiles()) {
 					
 			String fileExt = Files.getFileExtension(file.getName()).toLowerCase();
 			if (!fileExt.equals("pdf")) {
 				continue;
 			}
-			
+			lang="";
 			System.out.println(file.getAbsolutePath());
-
-			// Convert pdf files -> text
 			String fnameWithoutExtension = Files.getNameWithoutExtension(file.getName());
-			File textFile = new File(dir,fnameWithoutExtension+".txt");
-			String cmd = "pdftotext "+file.getAbsolutePath()+" "+textFile.getAbsolutePath();
-			String error = Utils.runShellCmd(cmd);
-			if (!error.isEmpty()) continue;
 			
-			// Read generated text file
-			String text = Utils.readFile(textFile);
+			// Convert pdf to text
+			TextConversionResult tar = convertPdf2Text(file, loadedEmbeddings.keySet());
+			if (tar == null) continue;
+
+			String text = tar.getText();
+			if (tar.isMultiLangDocument()) {
+				continue; // TODO multiple languages in document not handled
+			} else {	
+				lang = tar.getLanguages().iterator().next();
+			}
 			
-			// Replaces escape character with space 
-			text = text.replaceAll("\n", " "); 
-			text = text.replaceAll("--", ""); 
-			text = text.replaceAll("[,.:]","");
-			
-			// Detect text language
-			List<DetectedLanguage> result = utils.detectLanguage(text.substring(0, Math.min(100, text.length()-1)));
-			if (result.size() == 0) continue; // skip file if no language was detected
-			String lang = result.get(0).getLocale().getLanguage();
-			System.out.println("Found language : "+ lang+" in file "+file.getAbsolutePath());
-			
+			// Count languages for statistic
 			if (!languages.containsKey(lang)) {
 				languages.put(lang, 1);
 			} else {
@@ -160,7 +258,7 @@ public class Setup  {
 				t = t.trim();
 				
 				if(t.length() == 1 || expattern.matcher(t).find()) {
-					System.out.println("filtering token "+t);
+					//System.out.println("filtering token "+t);
 					continue;
 				}
 				else {
@@ -207,9 +305,13 @@ public class Setup  {
 	}
 	
 	
-
-	public void computeKeywordVectors(File rootDir, File keywordMapFile) {
-		
+	/**
+	 * Construct keyword vectors by summing up document vectors containing a specific keyword.
+	 * @param rootDir PDF document root directory
+	 * @param keywordMapFile Mapping from keywords to pdf-file folder names
+	 * @param partitionMap Mapping from pdf-file folder names to EVALUATION/TRANING
+	 */
+	public void computeKeywordVectors(File rootDir, File keywordMapFile, HashMap<String, Integer> partitionMap) {
 		
 		int good=0;
 		int bad=0;
@@ -219,7 +321,14 @@ public class Setup  {
 		boolean success;
 		for (String k : keywordmap.keySet()) {
 			
-			success = makeKeywordVector(rootDir, k, keywordmap.get(k));
+			// Only use training data for building keyword vectors
+			HashSet<String> keywordDocumentFolders = new HashSet<String>();
+			for (String folder : keywordmap.get(k)) {
+				if (partitionMap.containsKey(folder) && partitionMap.get(folder) == Utils.TRANING) {
+					keywordDocumentFolders.add(folder);
+				}
+			}
+			success = makeKeywordVector(rootDir, k, keywordDocumentFolders);
 			if (success) good++;
 			else bad++;
 		}
@@ -232,7 +341,7 @@ public class Setup  {
 	}
 		
 		
-	public boolean makeKeywordVector(File rootDir, String keyword, ArrayList<String> pdfFolders) {
+	public boolean makeKeywordVector(File rootDir, String keyword, HashSet<String> pdfFolders) {
 		double[] keyvec = null;
 		
 		// Initialize keyvector

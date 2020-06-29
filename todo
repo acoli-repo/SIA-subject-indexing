@@ -1,0 +1,54 @@
+/u02/oradata/tmp/acoli-training/files/11236206
+pdftotext /u02/oradata/tmp/acoli-training/files/11236206/Focal_aspects_in_the_Lelemi_verb_system_HO1.pdf /u02/oradata/tmp/acoli-training/files/11236206/Focal_aspects_in_the_Lelemi_verb_system_HO1.txt
+Error: Expected the default config, but wasn't able to find it, or it isn't a Dictionary
+
+
+/u02/oradata/tmp/acoli-training/files/11238592
+pdftotext /u02/oradata/tmp/acoli-training/files/11238592/KUEBLER_W24_Proceedings.pdf /u02/oradata/tmp/acoli-training/files/11238592/KUEBLER_W24_Proceedings.txt
+Error: font resource is not a dictionary
+Error: font resource is not a dictionary
+
+/u02/oradata/tmp/acoli-training/files/11237065
+pdftotext /u02/oradata/tmp/acoli-training/files/11237065/Cymbalista_Kleparski_Towards_ a_ cognitive_approach_to_extralinguistic_motivation_of_diachronic_semantic_change_2007.pdf /u02/oradata/tmp/acoli-training/files/11237065/Cymbalista_Kleparski_Towards_ a_ cognitive_approach_to_extralinguistic_motivation_of_diachronic_semantic_change_2007.txt
+pdftotext version 0.18.4
+Copyright 2005-2011 The Poppler Developers - http://poppler.freedesktop.org
+Copyright 1996-2004 Glyph & Cog, LLC
+Usage: pdftotext [options] <PDF-file> [<text-file>]
+  -f <int>          : first page to convert
+  -l <int>          : last page to convert
+  -r <fp>           : resolution, in DPI (default is 72)
+  -x <int>          : x-coordinate of the crop area top left corner
+  -y <int>          : y-coordinate of the crop area top left corner
+  -W <int>          : width of crop area in pixels (default is 0)
+  -H <int>          : height of crop area in pixels (default is 0)
+  -layout           : maintain original physical layout
+  -raw              : keep strings in content stream order
+  -htmlmeta         : generate a simple HTML file, including the meta information
+  -enc <string>     : output text encoding name
+  -listenc          : list available encodings
+  -eol <string>     : output end-of-line convention (unix, dos, or mac)
+  -nopgbrk          : don't insert page breaks between pa/u02/oradata/tmp/acoli-training/files/11237949
+  
+pdftotext /u02/oradata/tmp/acoli-training/files/11237949/LaPolla_1989_Verb_agreement_head-marking_vs_dependent-marking.pdf /u02/oradata/tmp/acoli-training/files/11237949/LaPolla_1989_Verb_agreement_head-marking_vs_dependent-marking.txt
+ges
+  -bbox             : output bounding box for each word and page size to html.  Sets -htmlmeta
+  -opw <string>     : owner password (for encrypted files)
+  -upw <string>     : user password (for encrypted files)
+  -q                : don't print any messages or errors
+  -v                : print copyright and version info
+  -h                : print usage information
+  -help             : print usage information
+  --help            : print usage information
+  -?                : print usage information
+  
+  /u02/oradata/tmp/acoli-training/files/11237227
+pdftotext /u02/oradata/tmp/acoli-training/files/11237227/14_NowinskaOliveiraeRossi_Traducao_lingua_alema_e_pos-graduacao.pdf /u02/oradata/tmp/acoli-training/files/11237227/14_NowinskaOliveiraeRossi_Traducao_lingua_alema_e_pos-graduacao.txt
+Error: Illegal entry in bfrange block in ToUnicode CMap
+Error: Illegal entry in bfrange block in ToUnicode CMap
+Error: Illegal entry in bfrange block in ToUnicode CMap
+Error: Illegal entry in bfrange block in ToUnicode CMap
+
+
+/u02/oradata/tmp/acoli-training/files/11237909/SG1514-01_Manak_a.pdf
+pdftotext /u02/oradata/tmp/acoli-training/files/11237909/SG1514-01_Manak_a.pdf /u02/oradata/tmp/acoli-training/files/11237909/SG1514-01_Manak_a.txt
+Error: Expected the optional content group list, but wasn't able to find it, or it isn't an Array

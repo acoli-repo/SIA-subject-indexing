@@ -2,12 +2,9 @@ package se;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,13 +15,82 @@ import java.util.regex.Pattern;
  */
 public class KeywordDetection {
 	
+	
+	
+	public static void evaluateData(File keywordVectorDir, Setup setup) {
+				
+		File documentRootDir = new File(setup.getProp().getProperty("DocumentRootDir"));
+
+		// Read data partition table
+		File dataPartitionFile = new File(setup.getProp().getProperty("DataPartitionFile"));	
+		HashMap<String, Integer> dataPartitionTable = Utils.readDataPartition(dataPartitionFile);
+		
+		System.out.println("\nEVALUATION starting ...");
+		int afiles = dataPartitionTable.size();
+		int efiles = 0;
+		int tfiles = 0;
+		System.out.println("All data files : "+afiles);
+		
+		for (String x : dataPartitionTable.keySet()) {
+			if (dataPartitionTable.get(x) == 1) {
+				efiles++;
+			} else {
+				tfiles++;
+			}
+		}
+		System.out.println("Evaluation files : "+efiles);
+		System.out.println("Training files : "+tfiles);
+		
+		
+		ArrayList<DocumentResult> results = new ArrayList<DocumentResult>();
+		
+		for (String dataId :  dataPartitionTable.keySet()) {
+			
+			if (dataPartitionTable.get(dataId) == Utils.TRANING) continue;
+			
+			File documentFolder = new File(documentRootDir, dataId);
+			
+			System.out.println("Evaluating PDF "+documentFolder);
+			
+			// Run keyword detection for evaluation document
+			DocumentResult dr = computeKeywordsForDoc(documentFolder, keywordVectorDir, setup);
+			dr.printResult();
+			System.out.println(dr.isbestFoundKeywordMatched());
+			results.add(dr);
+		}
+		
+		
+		int i = 0;
+		float precision = 0;
+		float recall = 0;
+		float f1Score = 0;
+		int truePositives = 0;
+		for (DocumentResult r : results) {
+			
+			truePositives+=r.truePos;
+			precision+=r.getPrecision();
+			recall=r.getRecall();
+			f1Score=r.getF1Score();
+			i++;
+		}
+		
+		System.out.println("Tested documents : "+i);
+		System.out.println("Test if the best computed keyword for a document matched at least one of the manually assigned keywords");
+		System.out.println("True positives : "+truePositives);
+		System.out.println("Precision : "+precision/i);
+		//System.out.println("Recall : "+recall/i);
+		//System.out.println("F1Score : "+f1Score/i);
+	}
+	
+	
 	/**
-	 * Find keywords for PDFs
-	 * @param docDir Directory with input PDF files
+	 * Compute keywords for PDF
+	 * @param docDir Directory with input PDF file(s)
 	 * @param keywordVectorsDir Directory where keyword vectors are stored
 	 * @param setup
+	 * @return 
 	 */
-	public static void computeKeywordsForDoc(File docDir, File keywordVectorsDir, Setup setup) {
+	public static DocumentResult computeKeywordsForDoc(File docDir, File keywordVectorsDir, Setup setup) {
 		
 		Utils utils = new Utils();
 		
@@ -33,17 +99,19 @@ public class KeywordDetection {
 
 		Pattern keyVecFilePattern = Pattern.compile(".*_(\\d+)(_.vec)");
 		
-		// result list with distances for each keyword
-		HashMap<String, Double> distances = new HashMap<String, Double>();
+		// Result with distances for each computed keyword
+		HashMap<String, Double> computedKeywordDistanceMap = new HashMap<String, Double>();
 		
-		// make vec for new doc
-		List<File> docVecs = setup.computeDocumentVector(docDir);
+		// Compute document vector(s) for input document
+		List<File> docVecs = setup.computeDocumentVector(docDir, false);
 		
-		// read vec for new doc
+		// Use computed documented vector(s) to compute similarity with keywords
 		for (File docVecFile : docVecs) {
+
+			// Read document vector
 			double[] docVec = utils.readVector(docVecFile);
 			
-			System.out.println("Keyword distances for "+docVecFile.getAbsolutePath()+ " :");
+			System.out.println("Keyword evaluation results for "+docVecFile.getAbsolutePath()+ " :");
 			
 			// compare document vector with all keyword vectors
 			for (File keyVecFile : new File(setup.getProp().getProperty("KeywordVectorDir")).listFiles()) {
@@ -61,45 +129,22 @@ public class KeywordDetection {
 						
 				// compute cos distance
 				double delta = Utils.cosDistance(docVec, keyVec);
-				distances.put(keyVecFile.getName(), delta);						
+				computedKeywordDistanceMap.put(keyVecFile.getName(), delta);						
 			}
 			
-			int limit = 100;
-			int i = 1;
-			System.out.println("Top 100");
-			for (Entry<String, Double> k : sortDistances(distances)) {
-				System.out.println(i+"\t"+k.getKey()+"\n"+k.getValue());
-				if (i++ > limit) break;
-			}
-			
-			// Show original keywords (only for testing training PDFs)
+			// Map from keywords to files containing a keyword
 			HashMap<String, ArrayList<String>> keywordMap = Utils.readKeywordMap(keywordMappingFile);
-			System.out.println("Original keywords (only for testing results for training PDFs):");
-			int j=1;
-			for (String key : keywordMap.keySet()) {
-				if (keywordMap.get(key).contains(docDir.getName())) {
-					System.out.println(j+++" "+key);
+			// Get manually assigned keywords for input document
+			HashSet<String> correctKeywords = new HashSet<String>();
+			for (String keyword : keywordMap.keySet()) {
+				if (keywordMap.get(keyword).contains(docDir.getName())) {
+					correctKeywords.add(keyword);
 				}
 			}
+			
+			return new DocumentResult(computedKeywordDistanceMap, correctKeywords);
 		}
-	}
-	
-	/**
-	 * Sort keywords by distance
-	 * @param distances
-	 * @return
-	 */
-	private static ArrayList<Entry<String, Double>> sortDistances(HashMap<String, Double> distances) {
-		
-		ArrayList<Entry<String, Double>> y = new ArrayList<Entry<String, Double>>(distances.entrySet());
-		Collections.sort(y, (new Comparator<Map.Entry<String, Double>>() {
-            public int compare(Map.Entry<String, Double> o1,
-                    Map.Entry<String, Double> o2) {
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        }));
-		
-		return y;
+		return null;
 	}
 	
 }

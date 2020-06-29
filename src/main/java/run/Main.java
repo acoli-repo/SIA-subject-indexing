@@ -47,6 +47,11 @@ public class Main {
 	    docDir.setRequired(false);
 	    options.addOption(docDir);
 	    
+	    Option eval = new Option("e", "evaluate", false, "evaluate data");
+	    eval.setRequired(false);
+	    options.addOption(eval);
+	    
+	    
 	    CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
         CommandLine cmd=null;
@@ -71,11 +76,14 @@ public class Main {
 		}
 		
 		System.out.println("Properties :");
-		System.out.println("PdfTrainingRootDir\t"+properties.getProperty("PdfTrainingRootDir"));
+		System.out.println("DocumentRootDir\t"+properties.getProperty("DocumentRootDir"));
 		System.out.println("KeywordMappingFile\t"+properties.getProperty("KeywordMappingFile"));
 		System.out.println("KeywordVectorDir\t"+properties.getProperty("KeywordVectorDir"));
 		System.out.println("EmbeddingsDir\t\t"+properties.getProperty("EmbeddingsDir"));
 		System.out.println("KeywordMinDocSupport\t\t"+properties.getProperty("KeywordMinDocSupport"));
+		System.out.println("DataPartitionFile\t\t"+properties.getProperty("DataPartitionFile"));
+		System.out.println("evaluationPortion\t\t"+properties.getProperty("evaluationPortion"));
+		
 		System.out.println();
 
 		
@@ -98,5 +106,13 @@ public class Main {
 				System.out.println("pdfDir option is required !");
 			}
 		}
+		
+		// Run evaluation
+		if (cmd.hasOption("evaluate")) {
+			setup = new Setup(properties, false);
+			File keywordVectorDir = new File(properties.getProperty("KeywordVectorDir"));
+			KeywordDetection.evaluateData(keywordVectorDir, setup);
+		}
+		
 	}
 }

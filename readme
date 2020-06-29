@@ -17,16 +17,18 @@ maven clean install
 
 Konfiguration :
 
-PdfTrainingRootDir=/path/to/PdfRootDir
+DocumentRootDir=/path/to/PdfRootDir
 KeywordMappingFile=/path/to/remap-indexTerms/subjects-extract.tsv
 KeywordVectorDir=/path/to/result/directory/for/keyvectors
 EmbeddingsDir=/path/to/fasttext/embeddings
+DataPartitionFile=/path/to/file/dataPartitionTable
 KeywordMinDocSupport=20
+evaluationPortion=20
 
 
 Verwendung : (Export java options : -Xmx4g -Xss5m)
 
-1.  Dokument und Keywortvektoren bauen für gegebene Fasttext Embeddings
+1.  Dokument und Keywortvektoren für gegebene Fasttext Embeddings bauen
 java -jar subject-indexing-0.0.1-SNAPSHOT-with-dp.jar -c run.properties -i 
 
 1.a Über die Spracherkennung werden nur solche PDFs bearbeitet, für die Embeddings zur Verfügung stehen.
@@ -42,12 +44,17 @@ durchlaufen lassen. Die Keywortvektoren werden automatisch aktualisiert.
 1.e Jeder Dokument-Vektor beihaltet im Dateinamen am Ende die Anzahl der gematchten Wörter im Embedding-Vokabular 
 
 
+2. Evaluation mit (?evaluationPortion? Prozent) aller PDFs die in rootDir zur Verfügung stehen
+   (Die Aufteilung von Trainings- und Evaluationsdaten wird bei der Initialisierung (1) vorgenommen. Welche Daten 
+    Trainings- und Evaluationsdaten sind wird in der Datei dataPartitionTable gespeichert)
+    
+java -jar subject-indexing-0.0.1-SNAPSHOT-with-dp.jar -c run.properties -e 
 
 
-2. Distanzen für gegebene PDFs
+3. Distanzen für beliebige gegebene PDF 
 java -jar subject-indexing-0.0.1-SNAPSHOT-with-dp.jar -c run.properties -k -d directory-with-input-PDFs 
 
-Es werden die Cosinus-Distanzen der besten 100 Keywords ausgegeben.
+Es werden die Cosinus-Distanzen der besten 20 keywords ausgegeben.
 
 Resourcen :
 https://github.com/facebookresearch/MUSE

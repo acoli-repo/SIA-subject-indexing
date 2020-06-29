@@ -12,7 +12,6 @@ import java.io.ObjectOutputStream;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.regex.Pattern;
@@ -41,6 +40,9 @@ public class Utils implements Utilities {
 	private static LanguageDetector languageDetector;
 	private static TextObjectFactory textObjectFactory;
 	private static boolean languagesInitialized = false;
+	public static final int TRANING = 0;
+	public static final int EVALUATION = 1;
+
 
 
 /**
@@ -446,13 +448,25 @@ public static float f1Score(int tp, int fp, int fn) {
 	return (2* (pr * re) / (pr + re));
 }
 
+
+/**
+ * F1-Score value
+ * @param precision
+ * @param recall
+ * @return
+ */
+public static float f1Score(float precision, float recall) {
+	return (2* (precision * recall) / (precision + recall));
+}
+
 /**
  * Recall value
  * @param tp true positives
  * @param fn false negatives
  * @return
  */
-private static float recall(int tp, int fn) {
+public static float recall(int tp, int fn) {
+	if (tp+fn == 0) return 0f;
 	return (tp / (tp+fn));
 }
 
@@ -463,7 +477,7 @@ private static float recall(int tp, int fn) {
  * @param fp false positives
  * @return
  */
-private static float precision(int tp, int fp) {
+public static float precision(int tp, int fp) {
 	return (tp / (tp+fp));
 }
 
@@ -475,7 +489,7 @@ private static float precision(int tp, int fp) {
  * @param evaluationPortion Amount of dataIds (in percent) used for evaluation (e.g. 10 means 10 %)
  * @return bipartition
  */
-private static HashMap<String, Integer> partitionData(ArrayList<String> dataIds, int evaluationPortion) {
+public static HashMap<String, Integer> partitionData(ArrayList<String> dataIds, int evaluationPortion) {
 	
 	if (evaluationPortion > 99) return null;
 	
@@ -488,14 +502,14 @@ private static HashMap<String, Integer> partitionData(ArrayList<String> dataIds,
 	while (i < evaluationNumber) {
 		
 		int index = (int) Math.floor(Math.random()*dataIds.size());
-		map.put(dataIds.get(index), 1);
+		map.put(dataIds.get(index), EVALUATION);
 		dataIds.remove(index);
 		i++;
 	}
 	
 	// Add training data to map
 	for (String id : dataIds) {
-		map.put(id, 0);
+		map.put(id, TRANING);
 	}
 	
 	return map;
@@ -577,7 +591,9 @@ public static void main(String[] args) {
 	for(String key : z.keySet()) {
 		System.out.println(key+"\t"+z.get(key));
 	}
-    
+	
+	
 }
+
 
 }
