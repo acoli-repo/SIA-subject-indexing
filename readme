@@ -96,3 +96,30 @@ ro	2
 da	2
 tr	43
 nl	5
+
+KeywordMinDocSupport=50, evaluationPortion=20
+Test if the top 1 computed keyword(s) of a document matched at least one of the manually assigned keywords
+Tested documents : 371
+True positives : 106
+Precision : 0.2857143
+
+Test if the top 2 computed keyword(s) of a document matched at least one of the manually assigned keywords
+Tested documents : 371
+True positives : 153
+Precision : 0.41239893
+
+Test if the top 3 computed keyword(s) of a document matched at least one of the manually assigned keywords
+Tested documents : 371
+True positives : 174
+Precision : 0.4690027
+
+Test if the top 4 computed keyword(s) of a document matched at least one of the manually assigned keywords
+Tested documents : 371
+True positives : 189
+Precision : 0.509434
+
+Test if the top 5 computed keyword(s) of a document matched at least one of the manually assigned keywords
+Tested documents : 371
+True positives : 200
+Precision : 0.53908354
+

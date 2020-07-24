@@ -70,7 +70,34 @@ public static double cosDistance(double [] v1, double[] v2) {
 	 return sp/vn;
  }
 
+
+
 /**
+ * Euclidean distance
+ * @author frank
+ * @param v1
+ * @param v2
+ * @return euclidean distance
+ */
+public static double euclideanDistance(double [] v1, double[] v2) {
+	 
+	 int dim;
+	 dim = v1.length;
+	 if (dim != v2.length) return 0d;
+	 
+	 double sp = 0;
+     for (int column = 0; column < dim; column++) {
+         sp += Math.pow(v1[column] - v2[column], 2.0);
+     }
+          
+	 return Math.sqrt(sp);
+ }
+
+
+
+
+/**
+ * Vector sum.
  * Vectors have to be of same length, otherwise null is returned
  * @param v1
  * @param v2
@@ -88,6 +115,8 @@ public static double[] vectorSum(double [] v1, double[] v2) {
 	
 	return sum;
 }
+
+
 
 /**
  * Vectors have to be of same length, otherwise null is returned
@@ -125,6 +154,130 @@ public static double[] vectorSum(double [] v1, float[] v2) {
      }
 	
 	return sum;
+}
+
+
+/**
+ * Max vectors (return vector that has max value in each dimension). 
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return max
+ */
+public static double[] vectorMax(double [] v1, double[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] max = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         max[column] = Math.max(v1[column], v2[column]);
+     }
+	
+	return max;
+}
+
+
+/**
+ * Max vectors (return vector that has max value in each dimension). 
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return max
+ */
+public static double[] vectorMax(float [] v1, float[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] max = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         max[column] = Math.max(v1[column], v2[column]);
+     }
+	
+	return max;
+}
+
+/** 
+ * Max vectors (return vector that has max value in each dimension). 
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return max
+ */
+public static double[] vectorMax(double [] v1, float[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] max = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         max[column] = Math.max(v1[column], v2[column]);
+     }
+	
+	return max;
+}
+
+
+/**
+ * Multiply vectors componentwise (Hadamar product).
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return product
+ */
+public static double[] vectorMultHP(double [] v1, double[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] mult = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         mult[column] = v1[column] * v2[column];
+     }
+	
+	return mult;
+}
+
+
+/**
+ * Multiply vectors componentwise (Hadamar product).
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return product
+ */
+public static double[] vectorMultHP(float [] v1, float[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] mult = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         mult[column] = v1[column] * v2[column];
+     }
+	
+	return mult;
+}
+
+/**
+ * Multiply vectors componentwise (Hadamar product).
+ * Vectors have to be of same length, otherwise null is returned
+ * @param v1
+ * @param v2
+ * @return product
+ */
+public static double[] vectorMultHP(double [] v1, float[] v2) {
+	
+	if (v1.length != v2.length) return null;
+	
+	double[] mult = new double[v1.length];
+	
+	 for (int column = 0; column < v1.length; column++) {
+         mult[column] = v1[column] * v2[column];
+     }
+	
+	return mult;
 }
 
 
