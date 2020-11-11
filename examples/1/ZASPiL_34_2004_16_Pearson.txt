@@ -1,0 +1,958 @@
+Voice Morphology, Case, and Argument Structure in Malagasy
+Matt Pearson
+Reed College
+
+1. Introduction
+The canonical Malagasy clause is divided into two constituents, the predicate
+phrase (PredP), and a definite noun phrase here called the trigger. This is schematized in (1) (cf. Keenan 1995 for evidence for this bipartite clause structure).
+(1)
+
+[PredP
+
+V .,. 1 [Trigger DP 1
+
+When the predicate phrase is headed by a verb, that verb is marked for voice to indicate the grammatical function of the trigger. Examples are given in (2) (here and
+throughout, the trigger is underlined; the morphological breakdown of each verb
+is given in brackets, with the voice morphemes boldfaced). (2a) illustrates the
+actor-trigger (AT) form, used when the external argument-here, the agent-is
+the trigger of the clause. The theme-trigger (TT) form in (2b) is used when an
+internal argument-here, the patient-functions as the trigger. Finally, the circumstantial-trigger (CT) form in (2c) is used when the trigger is an oblique element-here, the instrument with which the event is carried out. In each case, the
+trigger follows the predicate phrase, occurring at the right periphery of the sentence. Within the predicate phrase, the order of elements is VSOX: non-trigger
+external arguments appear right-adjacent to the verb, preceding internal arguments, which precede obliques.
+(2) a. Mamono [m-aN-vono 1 akoho amin'ny antsy I1.Y. ..... IDP.<m!.i?g.\y.
+AT.kili
+m-Pfx-kill
+chicken with-Det knife Det farmer
+'Ir~J¥.@~~ kills chickens with the knife'
+b. Vonoin' [ vono-in 1 ny mpamboly amin'ny antsy .1fY..... ¥;QrQ
+TT.kill
+kill-in
+Det farmer
+with-Det knife Det chicken
+'The farmer kills ~ht;..~hi.~Js:~!!.~ with the knife'
+c. Amonoan' [ aN-vono-an 1 ny mpamboly akoho !!y.....@.t~y
+chicken Det knife
+CT.kill
+Pfx-kill-an
+Det farmer
+'The farmer kills chickens with ~.tl.t;.)g).Jf~'
+In previous work (Pearson, to appear), I used evidence from binding, extraction,
+and other domains to argue that the trigger is not the subject of the sentence, as
+usually assumed, but is instead base-generated in the specifier of an A' -projection, TopicP, and linked to a null operator in the specifier of a lower projection,
+WhP, as shown in (3) (abstracting away from surface word order; on the rightperipheral position of the trigger, see Pearson (2001)).
+(3)
+
+[TopP
+
+Ir.i,gg\lxi Top
+
+[WhP
+
+0Pi
+
+[TP
+
+V ... ti ... III
+
+The analysis in (3) suggests a novel approach to the voice alternations in (2):
+Generally, voice morphology is taken to encode active/passive-like alternations in
+
+229
+
+the mapping of thematic roles to the subject (nominative Case-checking) position.
+However, if the trigger is not the subject of the clause but a topic linked to an A'chain, it is possible that voice morphology instead indicates the position from
+which A'-extraction takes place, with the AT form in (2a) marking subject extraction, the TT form in (2b) marking object extraction, and the CT form in (2c)
+marking oblique extraction.
+Under this approach, voice in Malagasy is less like voice in English and
+more like wh-agreement, of the sort which Chung (1998) documents for Chamorroo In A' -extraction contexts in Chamorro, regular subject agreement of the sort
+shown in (4) is replaced by special morphology indicating whether the extracted
+element is a subject, object, or oblique, as in (5). In Pearson (to appear) I suggested that Malagasy voice marking is a 'generalized' version of this type of marking:
+While in Chamorro wh-agreement is confined to questions, relative clauses, and
+the like, in Malagasy it appears in all clause types due to a requirement that the
+specifier of WhP be filled in every clause.
+(4)
+
+kareta
+Ha-fa'gasi si Juan i
+3s-wash
+Det Juan Det car
+'Juan washed the car'
+
+kareta?
+(sub). extraction)
+(5) a. Hayi f<um>a'gasi i
+who urn-wash
+Det car
+'Who washed the car?'
+b. Hafa f<in>a'gasese-nfia
+si Henry para hagu? (ob). extraction)
+what in-wash.Prog-3s.Lnk Det Henry for you
+'What is Henry washing for you?'
+C. Hafa para
+fa'gase-rnrnu ni kareta?
+(obi. extraction)
+ObI car
+what Fut 0-wash-2s
+'What are you going to wash the car with?'
+In this paper I focus on the voice affixes themselves and propose an account of
+their distribution. Specifically, I argue that they are realizations of light verbs and
+Case-checking heads, which combine with the root through head-to-head movement. The distribution of the affixes is determined by the positions from which,
+and through which, the null operator in (3) moves on its way to the specifier of
+WhP. For example, the actor-topic prefix m- is treated as a nominative Casechecking head, which gets spelled out just in case the operator raises through its
+specifier. (My analysis is thus in the spirit of Guilfoyle, Hung, & Travis (1992),
+who also associate voice morphemes with Case licensing.)
+
+2. The Morphology of voice
+Before proceeding with this analysis, I offer a quick overview of Malagasy voice
+morphology. Verbs in Malagasy are formed from roots, some of which function
+independently in the language, either as nouns or as stative predicates. To form a
+verb stem, the root combines with one of a small set of verbal prefixes (glossed
+
+230
+
+'Pfx' in the examples), of which the two most common are aN- and i-. Some
+examples of roots and the verb stems formed from them are given in (6).
+(6)
+
+ROOT
+
+VERB STEM
+
+asa
+fefy
+vavaka
+
+'work, task'
+'enclosure'
+'prayer'
+
+i-asa
+i-fefy
+i-vavaka
+
+'work'
+'be fenced'
+'pray'
+
+feno
+soratra
+tapaka
+
+'full'
+'writing'
+'broken'
+
+aN-feno [ameno]
+aN-soratra [anoratra]
+aN-tapaka [anapaka]
+
+'write'
+
+'fill'
+'break'
+
+Although the choice between aN- and i- is lexically determined, it does correlate
+to some degree with transitivity: aN- stems are almost always transitive, while istems tend to be intransitive. As illustrated in (7), there are a large number of
+roots which can take either prefix, where aN- forms a transitive stem and i- forms
+its intransitive counterpart:
+(7)
+
+i-haja
+i-sasa
+i-voha
+
+'be respected'
+'wash oneself
+'be open'
+
+aN-haja [anaja]
+aN-sasa [anasa]
+aN-voha [amoha]
+
+'respect (tr.)'
+'wash (tr.)'
+'open (tr.)'
+
+Additional affixes are attached to roots and stems to mark voice. There are five
+morphologically distinct voice forms in Malagasy, listed in the table below an
+illustrated using aN-tafi 'wrap, dress' and aN-velar 'unroll, spread out' (two of a
+handful of stems which can occur in all five forms). The actor-trigger (AT) voice
+is formed by prefixing m- to the stem; while the circumstantial-trigger (CT) voice
+is formed with the suffix -an. The other three voices are usually grouped together
+as the theme-topic (TT) voices. These are formed by adding the suffix -an or -in,
+or the prefix a-. Notice that the verbal prefix is absent in the TT forms, a fact to
+which I return in the next section. 1
+EXAMPLES
+
+VOICE TEMPLATE
+AT
+m- Pfx- ROOT
+Pfx- ROOT -an
+
+CT
+
+ROOT -an
+TT
+ROOT -in
+a-
+
+>
+>
+aN-tafi-an
+>
+aN-velar-an >
+tafi-an
+>
+>
+velar-an
+tafi-in
+>
+>
+velar-in
+a-tafi
+>
+>
+a-velar
+m-aN-tafi
+moaN-velar
+
+ROOT
+
+manafy
+mamelatra
+anafiana
+amelarana
+tafiana
+velarana
+tafina
+velarina
+atafy
+avelatra
+
+Examples of these five forms are given in (8)-(10). The AT form is used when the
+trigger is the subject of the clause-that is, the sole 'core' argument of an intran-
+
+231
+
+sitive verb (8a), or the external argument of a transitive verb (8b). The TT voices
+are used when the trigger is the direct or indirect object of a transitive verb (9)
+(see sections 4 and 5 for more on the distribution of these affixes).2 (10) illustrates
+the CT form, which is used when the trigger bears some oblique role such as instrument, location, or benefactee.
+(8) a. Mipetraka [m-i-petrak 1 any Antsirabe !!y.... .Y!<hjy~yy
+AT.live
+m-Pft-live there Antsirabe Det woman
+'IlW.Wgw<W,lives in Antsirabe'
+b. Manoratra [ m-aN-sorat 1 taratasy !!y..... .mQj@.!!tr.~
+m-Pft-write letter
+AT.write
+Det student
+'JJw..stg4.~m. is writing a letter'
+(9) a. Tapahin' [tapak-in 1 ny lehilahy p.1. .....Y!l·A~t!!91.
+TT.cut
+cut-in
+Det men
+Det vine.rope
+'The men cuqhn,j!!~.!:9.P.~'
+b. Soratan' [sorat-an 1 ny mpianatra !!y.....w.~!!ffi~y
+TT. write write-an Det student
+Det letter
+'The student is writing fu~..1.~.tt~(
+c. Atao
+[a-taov 1 p.1. .....fjQm.®@.~.. .x~h~tm
+TT.make a-make
+Det preparation all
+, AlUA~. PX~'pWi\tjgJJ..s are being made'
+(10) a. Amonoan' [ aN-vono-an 1 ny mpamboly akoho
+!!y......@.tsY
+CT.kill
+Pfx-kill-an
+Det farmer
+chicken Det knife
+'The farmer kills chickens wj.th.t))'!<.k!)tf~'
+b. ltoeran' [i-toer-an 1 ny ankizy· .~9. .... J~@'Q .. jQ
+CT.live
+Pft-live-an Det children this house this
+'The children live jJJ...th£\t.hQg~~.'
+c. Amonoan' [ aN-vono-an 1 ny mpamboly akoho 1).1. .... .Y.~·h~lJ.y'
+Pft-kill-an
+Det farmer
+chicken Det guest
+CT.kill
+'The farmer is killing chickens f.QLth!<.gg~~t~'
+
+I now consider each of the morphemes in the above table in tum. I start with the
+verbal prefixes, and then turn to the AT prefix m- and the TT suffix -in. Next I
+consider the TT prefix a-. Finally, I discuss -an, found in the remaining TT form,
+and in the CT form.
+
+3. The verbal prefIxes
+As shown in the table above, the verbal prefixes aN- and i- appear in AT clauses,
+where the subject is extracted, and in CT clauses, where an oblique element is
+extracted. However, these prefixes are absent in TT clauses, where an object is
+extracted. What's the reason for this? Recall that aN- and i- form verb stems from
+roots, many of which can occur independently: For instance, (12) shows that aNmay attach to a one-place stative root to form a two-place verb, adding an agent
+argument in the process.
+
+232
+
+(11) a. F eno ny.... .tilXQMi!!lgy
+full Det bottle
+'IJ.w..Q.9.nl!< is full'
+b. Mameno [m-aN-feno ] ny tavoahangy ny.....y.~Ny.~y.y.
+AT.fill
+m-Pft-full
+Det bottle
+Det woman
+'JJW.WWJ:l.®' is filling the bottle'
+Thinking in tenns of a Hale & Keyser approach to argument structure, this suggests that the verbal prefixes are light verbs, which take a root or one-place predicate as their complement, and project an external argument in their specifier. This
+is schematized in (12) (here and below, I abstract away from head-to-head movement; I assume that verb adjoins successively to each head in its extended projection, raising as high as T before Spell Out). Assuming that the prefixes are light
+verbs (and assuming furthennore that obliques are merged outside of vP; cf.
+section 6), the proper generalization is as follows: The light verb v is suppressed
+(rendered covert) when an operator undergoes A' -extraction from its complement.
+(12)
+
+[TP [vp DP [v' v [vp DP [v' V ] 111]
+PftROOT
+
+The connection between extraction and the spell-out of the light verb receives a
+straightforward explanation in tenns of phases. In his account of successive cyclic
+movement, Chomsky (1999, 2000) divides the clause into two domains, a lower
+phase, identified with vP, and an upper phase, identified with CP. In accordance
+with the Phase Impenetrability Condition (13) (cf. Chomsky 2000, p. 108), a constituent can move out of a phase only by first moving to its left edge, merging as a
+specifier of the highest head in the phase. If this is correct, then in order for an
+operator to extract from the complement of the light verb in Malagasy, it must
+first raise to become a specifier ofvP, as shown in (14). In other words, SpecvP is
+an escape hatch for A'-movementto SpecWhP in IT clauses:
+(13)
+
+In phase a with head H, the domain of H is not accessible to operations
+outside a; only H and its edge (i.e., the specifier(s) ofHP) are accessible to
+such operations.
+
+(14)
+
+[WhP 0Pi [TP [vp ti [v' DP [v' v [vp ... ti .. · ]
+
+11 J) 1
+
+I propose that the prefixes aN- and i_ alternate with a 0 realization of the light
+verb. The empty light verb has a feature which attracts an operator into its specifier. By contrast, the overt light verbs aN- and i- lack this feature, and so may not
+host an operator. In other words, extraction from the lower phase is possible only
+when the head of the lower phase v is spelled out as the 0 allomorph; when v is an
+overt light verb, this renders it impenetrable for A'-extraction.
+Alternations of this sort are well known in the head of the upper phasethat is, the complementizer head. In languages such as Irish, for example, the
+fonn of the complementizer depends in part on whether there is an A' -operator in
+the specifier of CP. The usual finite complementizer is go, as shown in (15); how-
+
+233
+
+ever, when an operator raises to (or through) SpecCP, the complementizer a is
+used instead, as shown in (16). I suggest that the alternation in Malagasy between
+the verbal prefixes aN· or i· and 0 is a lower phase analogue of this complement.
+izer alternation: In each case, the availability of a landing site or escape hatch for
+A·bar movement correlates with how the head of the phase is realized. (Examples
+taken from Carnie, Harley, & Pyatt 2000, Guilfoyle 2000, and Chung & McClos·
+key 19S7, respectively.)
+(15)
+
+bhfaca se an madra 1
+Ceapaim [ go
+think. 1s
+Comp saw
+he the dog
+'I think that he saw the dog'
+
+(16) a. Caide a
+chuir sin i do cheann?
+what Comp put that in your head
+'What put that in your head?'
+b. an bhean [Op a
+chuir t·isteach air 1
+the woman
+Comp put
+in
+on.it
+'the woman who applied for it'
+
+4. Intransitive and monotransitive verbs
+Next I turn to the AT prefix m· and the TT suffix ·in. Recall that m· appears on
+the verb when the transitive or intransitive subject is the trigger, as in (17) and
+(1 Sa), while ·in appears when the transitive object is the trigger, as in (lSb):
+
+(17)
+
+Mitomany [ m·i·tomani
+AT.cry
+m·Pfx·cry
+'IhH\.iXI is crying'
+
+1 rJ.,Y. .... '?~~y.iWy
+Det girl
+
+(IS) a. Mamaky [m·aN·vaki 1 boky ny.... '?~y!Wy
+AT.read
+m·Pfx·read book Det girl
+'Ih~.g~r! is reading a book'
+b. Vakin' [vaki·in 1 ny zazavavy .J;l.Y. .....~9.~y.
+TT.read read·in
+Det girl
+Det book
+'The girl is reading th~..9.9.9.k'
+Assuming that Malagasy is a nominative·accusative language, it seems that AT
+marking correlates with nominative Case, while TT marking correlates with accu·
+sative Case. I propose that m· and ·in are realizations of the functional heads
+which license nominative and accusative Case, respectively: When the operator
+which raises to SpecWhP has a nominative Case feature to check, the head which
+checks it is spelled out on the verb as m·, and when the operator has an accusative
+Case feature, the head which checks that feature is spelled out as ·in.
+First of all, consider the sentences in (19) and (20), featuring a TT verb
+prefixed with a·. As these examples show, the predicate·internal subject may be
+overt, as in the (b) sentences; or it may be covert, as in the (a) sentences, in which
+case the agent is construed as unknown or arbitrary. Notice that overt subjects im·
+
+234
+
+mediately follow the verb, which is suffixed with the linking morpheme, glossed
+'Lnk' in the examples (this linking morpheme is realized as -y between two noncontinuant consonants, otherwise as -n '; I assume that the underlying form of this
+morpheme is -ny).
+(19) a. Atosika [a-tosek 1 ))'Y..... YiltQ
+TT.push a-push
+Det stone
+'Someone is pushing X1W.. ~~9.Do~' or 'Th.()..~tQ):).!< is being pushed'
+b. Atosiky L a-tosek-ny 1 ny vehivavy )).Y.. ".YiltQ
+TT.push a-push-Lnk Det woman
+Det meal
+'The woman is pushing tlW.~.tQ!W'
+(20) a. Aroso
+[ a-roso 1 ny vahiny !W.....~*ilfQ
+TT.serve a-serve Det guest Det meal
+'Someone serves the guests )Jw..m\!.~\' or ']1W..my.~1 is served to the guests'
+b. Aroson' [a-roso-ny 1 ny vehivavy ny vahiny !1Y..... ~.*-f,l.f9.
+TT.serve
+a-serve-Lnk Det woman
+Det guest Det meal
+'The woman is serving the guests ~.h'tl..m\!.f,l.r
+
+Although the linking morpheme surfaces only on stems taking the a- prefix, I will
+assume that it is also present on stems ending in -in and -an when they have overt
+subjects, but fails to surface because of fusion with the n ofthe voice suffix:
+(21) a. Vakina [vaki-in J !1Y... J:>.9.Ky'
+TT.read read-in Det book
+'Ih'tl.J?.9.9.K is being read'
+b. Vakin' [vaki-in-ny 1 ny zazavavy )).y.... .J?Q~
+TT.read read-in-Lnk Det girl
+Det book
+'The girl is reading Xh\!..p.9.9.k'
+
+Since the linking morpheme is required to license an overt subject in the predicate
+phrase, I will assume that it is located in the functional head which checks nominative Case. Adapting an analysis due to Travis (1994), I identify this as the event
+head E, which selects vP as its complement, as shown in (22). In addition to
+checking nominative Case, the event head introduces (or binds) the event argument of the clause, and is in turn selected by the tense head. As an examination of
+the forms above shows, the linking morpheme is in complementary distribution
+with the AT prefix m-: I will therefore assume (following Travis (1994» that the
+m- prefix is also in E. So m- and -ny are alternate realizations of the nominative
+Case-checking head.
+(22)
+
+[TP T [EP
+
+E-[NOMj
+
+[vp DP [v' v ",
+
+11 J 1
+
+-ny / mWhat determines how E will be realized? Given my theory of triggers, this correlates with whether the subject (i.e., the nominative Case-marked argument) undergoes A' -movement or not: When the subject is an operator which raises to
+
+235
+
+SpecWhP, the verb carries the prefix m-, and when the subject remains inside TP,
+the verb carries the suffix -ny. To capture this alternation, I propose that how the
+E head is realized depends on whether or not it contains an EPP feature in addition to its Case feature-that is, whether or not it projects a specifier, triggering
+raising of the nominative DP (cf. Chomsky 1999,2000): When E carries an EPP
+feature, it is spelled out as m-, and when it lacks an EpP feature, it is spelled out
+as -ny. I will refer to a head containing an EPP feature as strong, and a head
+which .lacks an EPP feature as weak.
+When the subject is an operator which raises to SpecWhP to check a feature
+of Wh, it must pass through the specifier of EP in order to check its Case feature.
+Consequently, E will have to be strong, and so it will be spelled out as m-. The
+structure is shown in (23) (abstracting away from head-to-head movement).
+However, when the subject does not raise to SpecWhP, it does not need to pass
+through SpecEP in the overt syntax. In principle E could strong or weak in such
+cases. Suppose that economy dictates in favor of the weak form, and so the verb
+carries the suffix -ny. In this case, the subj ect is spelled out in its base position,
+SpecvP, as in (22), and checks its Case via an Agree relation, without movement.
+(23)
+
+[WhP
+
+Opi
+
+[TP [EP
+
+ti
+
+[E·
+
+E [vp ti [v· V ...
+mPfx-
+
+V
+
+]] ]] ] ]
+
+ROOT
+
+My analysis of the TT suffix -in takes essentially the same form. Alongside the
+nominative Case-checking head E, I assume there is a second functional head
+responsible for checking accusative Case, located between the light verb and the
+root. Following Travis (1991), I identify this as the aspect head, which projects an
+AspP, selected as the complement of the light verb, as in (24).
+(24)
+
+[vp (DP) [v·
+
+v
+(Pfx-)
+
+[AspP
+
+ASP-lACC] [vp DP [v·
+0
+
+V
+
+] ] ]] ]
+
+ROOT
+
+Like the event head, the aspect head is spelled out differently depending on whether it is strong or weak. When it is strong, and triggers raising of the object for
+accusative Case checking, it is spelled out as -in; otherwise it surfaces as 0. When
+the verb is intransitive, and Asp lacks an accusative Case feature altogether, the 0
+variant will be selected. When the verb is transitive, either variant may be selected. Normally the 0 variant will be selected, and the direct object will remain in
+situ, checking its Case feature without movement, as in (24). However, when the
+direct object is an operator, its Case is checked via overt movement to SpecAspP.
+In such cases the aspect head must be strong, and so the suffix -in will be inserted.
+From SpecAspP the operator raises to the edge of the lower phase, attracted by
+the phonetically empty light verb, before raising out of the lower phase to SpecWhP. This is summarized in (25):
+(25)
+
+[WhP
+
+0Pi ... [vP ti [v· (DP)
+
+V
+
+o
+
+236
+
+[AspP
+
+ti
+
+[Asp·
+
+Asp [vp ti
+-in
+
+V
+ROOT
+
+]] ]]]]
+
+5. Ditransitive constructions
+Although the majority of monotransitive verbs mark the TT voice using the suffix
+-in, there are a number of verbs which take the suffix -an instead, or the prefix a-,
+as illustrated in (9) above. More often, however, -an and a- are used with ditransitive verbs. As Paul (1999) discusses, ditransitives in Malagasy fall into various
+semantic classes: One class, illustrated by roso 'serve' in (26), includes verbs of
+transmission, selecting a goal or recipient and a locatum: Here -an is used when
+the goal is the trigger (26b), while a- is used when the locatum is the trigger (26c).
+A second class of ditransitives is illustrated by didi 'cut' in (27): This class includes verbs which select a patient, and an additional argument denoting an
+instrument acted upon by the agent to bring about a change in the patient. With
+verbs of this type, -an is used when the patient is the trigger (27b), while a- is
+used when the instrument is the trigger (27c):
+
+(26) a. Mandroso [m-aN-roso ] sakafo ny vahiny )).Y .... mp!IDJJ?.9JY.
+AT. serve m-Pfx-serve meal Det guest Det farmer
+'Th<::..fw.m.er serves the guests a meal'
+b. Rosoana [roso-an] sakafo !1y.....y.Mi!ly.
+TT.serve serve-an meal
+Det guest
+'Il;1,e.g\l&~t.~ are serveda meal'
+c. Aroso
+[ a-roso] ny vahiny p.y..... ~.*afQ
+TT.serve a-serve Det guest Det meal
+'The.me.a.1 is served to the guests'
+(27) a. Mandidy [m-aN-didi ] antsy ny hena p.y..... mp!IDJP.9Jy
+AT.cut
+m-Pfx-cut
+knife Det meat Det farmer
+'The..fw.m!<r. cuts the meat with a knife'
+b. Didiana [ didi-an ] antsy )).Y .....I;1,<: .!l(1,
+TT.cut
+cut-an
+knife Det meat
+'Ihe.me.a~ is cut with the knife'
+c. Adidy [ a-didi ] ny hena )).y .... !!!W!Y.
+TT.cut a-cut
+Det meat Det knife
+'Th.e.}gl.if~ is used to cut the meat'
+The verbs which take both -an and a- TT forms constitute the double object verbs
+of Malagasy-that is, those verbs which allow two internal DP arguments. Comparing the sentences in (26) above, we see that the trigger of the a- clause in (c)
+corresponds to the leftmost object in the actor-topic sentence in (a) (usually
+indefinite and adjacent to the verb), while the trigger of the -an clause in (b)
+corresponds to the rightmost object in (a). This pattern holds for (27). Following
+Dryer (1986), I will refer to the object farther from the verb as the primary object
+(PO), and the object closer to the verb as the secondary object (SO), as in (28).
+Hence the proper generalization is that the -an form indicates that the PO of a
+double object construction has undergone raising to SpecWhP, while the a- form
+indicates that the SO has undergone raising.
+
+237
+
+so
+
+(28)
+
+PO
+
+Mandroso
+sakafo
+ny vahiny
+AT.serve
+meal
+Det guest
+'The fanner serves the guests a meal'
+Mandidy
+antsy
+ny hena
+AT .cut
+knife
+Det meat
+'The fanner cuts the meat with a knife'
+
+ny mpamboly
+Det fanner
+ny mpamboly
+Det fanner
+
+Following Marantz (1993), I assume that double object constructions are really
+app/icative constructions in which the applicative morpheme is null. As schematized in (29) below, Marantz treats the applicative morpheme as a kind of light
+verb, which selects a phrase containing the lexical root as its complement (cf. Larson 1988). The PO merges as the specifier of the applicative head, while the SO
+merges within its complement. Based on data from Bantu applicatives, Marantz
+argues that the structure in (29) compositionally represents the complex event
+denoted by an applicative construction, such that the PO is interpreted as affected
+by the sub-event denoted by the complement of the applicative head. Hence, for
+verbs taking a goal and a locatum, it is the goal which will be mapped to the PO
+function, while verbs taking a patient and an instrument will map the patient to
+the PO function.
+(29)
+
+VP
+~
+V'
+primary (affected) object ~
+DP
+patient, goal/recipient
+~
+V
+VP
+~
+Appl
+secondary object
+~
+DP
+V'
+locatum, instrument
+~
+V
+ROOT
+
+Under this analysis, the a- prefix receives a similar treatment to m- and -in, discussed earlier. Suppose that in double object constructions, the Case feature ofthe
+PO is checked by the Asp head, which selects the structure in (29); while the Case
+feature of the SO (partitive?) is checked by a lower functional head F, which takes
+the VP containing the root as its complement and projects an FP, selected as the
+complement of the applicative head. As with E and Asp, assume that the F head
+may be strong or weak, where the prefix a- spells out a strong F head. When the
+SO is an operator attracted to SpecWhP, its Case is checked in Spec of FP by a
+strong F, and the preflx a- appears on the verb; otherwise the SO remains in situ,
+and the F head is nulL The structure is given in (30): The SO raises first to SpecFP to check Case. It then raises further to the edge of the lower phase (forcing v to
+be null) before raising on to SpecWhP.
+(30)
+
+[WhP
+
+0Pi ...
+
+[,p
+
+ti [v' (DP)
+
+V [AspP
+
+o
+
+238
+
+[vp DP
+
+[FP
+
+ti
+
+[F'
+
+F [vp ti ... V ...
+aROOT
+
+As for -an, I treat this suffix as the applicative morpheme in (29). When the operator in SpecWhP raises from the PO position, the applicative head which takes the
+PO as its specifier is spelled out as -an, as schematized in (31). When the PO remains in situ, the applicative head is null. 3
+(31)
+
+[WhP
+
+0Pi ... [vp t; [v' (DP) V [AspP ti Asp [vp t; V [FP '"
+
+o
+
+-an
+
+V ]]]]]]
+ROOT
+
+In support of treating -an as a spell-out of the applicative morpheme, observe the
+following: First, it seems that a ditransitive verb in Malagasy accepts the -an TT
+form if and only if it can occur in a double object construction. Consider the verb
+stem aN-petrak 'put' in (32), which arguably selects two arguments, a locatum
+and a goal. As shown in (32b), 'put' does not license a double object construction;
+rather, the goal must take the form of a PP, as in (32a). (32c) shows that, as
+expected, the -an TT form is also disallowed. This is presumably because the goal
+of a putting event is not normally understood to be affected by the action.
+(32) a. Mametraka [m-aN-petrak ] boky eo
+ambonin'ny seza ny.....~.!g!\
+AT.put
+m-Pfx-put
+book there on-Det
+chair Det child
+'Th."..Q)J.iJct is putting books on the chair'
+b. *Mametraka [m-aN-petrak] boky n y seza !).y. .... ~.~
+AT.put
+m-Pfx-put
+book Det chair Det child
+'Ih"..Q)J.iJct is putting books on the chair'
+c. * Petrahana [petrak-an] boky !)..Y. .... ~.".~~
+TT.put
+put-an
+book Det chair
+'IMt9h1!-Jx is having books put on it'
+On the other hand, the -an TT form can sometimes be used to convert an intransitive stem into a transitive stem by 'promoting' a locative adjunct to the role of
+affected object. Consider the stem i-petrak 'sit', the intransitive counterpart of
+aN-petrak: Being intransitive, this stem would not be expected to take TT morphology. However, my consultant allows the -an TT form when the location' ny
+seza 'the chair' is the trigger, as in (33b)-but crucially only if the chair is understood as affected by the act of sitting on it; otherwise the CT form would be used.
+I take the patterns in (32) and (33) as evidence that the TT form with -an marks
+A' -extraction of an affected object in an applicative construction.
+(33) a. Mipetraka [m-i-petrak ] amin'ilay seza ny..... ?;~.<.\
+AT.sit
+m-Pfx-sit
+on-that
+chair Det child
+'Ih"..Q)).j.!.ct is sitting on that chair'
+b. Petrahana [petrak-an 1 jt~y....~~?;<.\
+TT.sit
+sit-an
+that chair
+'Th.~~..9b..~jX is being sat in'
+One question remains, namely: Why is -an is spelled out only if its specifier raises
+out? Here I follow Sportiche (1992) in adopting a generalized version of the
+
+239
+
+'doubly-filled COMP' filter (34). In accordance with this filter, -an is spelled out
+when its specifier contains a trace; otherwise the applicative head is null. Note
+that (34) is meant to hold generally: As an examination of the structures in this
+paper will show, each of the projections I posit (with one exception, which I return to below) has an empty head, an empty specifier, or both, at Spell Out.
+(34)
+
+If H is a head containing some feature F, • [HP XP [H· HO ... ] ] when XP
+and HO both overtly encode F.
+
+6. The circumstantial voice
+I have now provided analyses of the AT form and the three TT forms in the table
+in section 2. This leaves the CT voice, used when the trigger is an oblique-that
+is, an element which requires a preposition in clauses where it does not function
+as the trigger. Examples are given in (35b) and (36b), showing CT clauses with
+locative and instrumental triggers, respectively.
+(35) a. Mitoetra [m-i-toer ] ao
+amin'io trano io ny.....~t~y
+AT.live
+m-Pft-live here in-this house this Det children
+'Ib.t;.fh.H\.\nm live in that house'
+b. Itoeran' [i-toer-an-ny
+] ny ankizy t9. ..... IT.®.9.....t9.
+CT.live
+Pft-live-an-Lnk Det children this house this
+'The children live jJ;uhll,thQ]'!.~~'
+(36) a. Mamono [m-aN-vono] akoho amin'ny antsy nY.....ffip!'lm.Q.9h':
+AT.kill
+m-pfx-kill
+chicken with-Det knife Del farmer
+'Ib.t;JllXm~r kills chickens with the knife'
+b. Amonoan' [ aN-vono-an-ny] ny mpamboly akoho 1).y ..... !illt~y.
+CT. kill
+pfx-kill-an-Lnk
+Det farmer
+chicken Det knife
+'The farmer kills chickens M.th.th!<.!mif'"
+Notice that the CT form does not include any new morphemes, but rather a combination of morphemes found in other voice forms. Like the TT forms, the CT
+takes the linking morpheme -ny, indicating that the E head is weak and the subject
+is Case-licensed in SpecvP. The CT also includes the suffix -an, which means that
+the operator raises from the specifier of an applicative head. But unlike the TT
+form with -an, the root carries a verbal prefix. Since by assumption the lower
+phase is opaque to A' -extraction when a verbal prefix is present, it follows that
+the operator in SpecWhP in a CT clause has raised from somewhere outside ofvP.
+Putting these pieces together, I conclude that the applicative head in
+Malagasy may be introduced in either the lower phase or the higher phase. In
+'low' applicatives, the applicative head merges with the VP containing the root.
+Its specifier is a DP which checks accusative Case under agreement with the Asp
+head, and is interpreted as an 'affected object'. In 'high' applicatives, by contrast,
+the applicative head merges with some larger projection, possibly vP. Its specifier
+does not contain a DP bearing accusative Case and interpreted as affected, but
+rather a PP. A possible structure is given in (37).4
+
+240
+
+(37)
+
+[vP PP [v'
+
+V [vp DP v AspP
+App\
+
+111
+
+Extraction of an operator from this higher applicative position yields the combination of morphemes associated with the CT voice, as shown in (38): The subject
+and object remain in situ, their Case-licensing heads spelled out as -ny and 0,
+respectively. The operator raises from the specifier of the higher applicative head,
+causing its head to be spelled out as -an, in accordance with the 'doubly-filled
+COMP' filter. No extraction takes place from vP, and so the light verb surfaces as a
+prefix on the verb stem. To explain the absence of a preposition in CT clauses, we
+may assume (a) that the operator is of category PP, and/or (b) that the oblique
+operator in SpecWhP (comparable to dont in French) does not need Case.
+(38)
+
+[WhP 0Pi [TP [EP E [yp ti V [vp (DP) v [AspP... V 1111111
+-ny
+-an
+PfxROOT
+
+One apparent problem with (38) is that the vP projection violates the 'doubly-filled COMP' filter discussed above: The head of vP is spelled out as a verbal prefix,
+while the specifier of vP contains the in situ subject. There are various possible
+solutions to this problem. For example, we could simply expand the tree so that
+the subject and the verbal prefix end up in different projections. A second,
+perhaps more interesting possibility is that vP, by virtue of being a phase, is
+somehow exempt from the 'doubly-filled COMP' filter. Adopting Chomsky's
+(1999) idea that Spell Out operates cyclically, we might speculate that the 'doubly-filled COMP' filter (plausibly a condition on Spell Out) applies only within a
+given cycle. Suppose that the head of a phase and its specifier are spelled out in
+different cycles, then it follows that vP would be able to have an overt head cooccurring with an overt specifier.
+
+7. Conclusion
+In this paper I have argued that the morphemes which combine to form the different voices in Malagasy are realizations of heads which attach to the root via headto-head adjunction in the syntax. The verb stem-forming prefixes are light verbs,
+which alternate with a null variant when A' -extraction from the lower phase takes
+place. The AT prefix m-, the TT prefix a-, and the TT suffix -in are strong Caselicensing heads which surface just in case an operator raises through their specifiers. Finally, the suffix -an, found on the CT and on one of the TT forms, is an
+applicative head, which surfaces when the applicative argument raises out of its
+specifier, in accordance with a generalized 'doubly-filled COMP' filter.
+
+Endnotes
+ACKNOWLEDGMENT: Thanks to Noro Ramahatafandry for providing much of
+the data for this paper.
+
+241
+
+I. For discussion of the rules for deriving the surface forms from their
+underlying representations, see Keenan & Polinsky (1998), Erwin (1996), Paul
+(1996aJb). Here I will mention only that when a consonant occurs at the end of a
+phonological word, an epenthetic a is inserted after it, in accordance with a surface ban on closed syllables (e.g., velar-an> velarana).
+2. Note that the TT suffixes -in and -an are generally treated not as
+separate voice markers, but as lexically-conditioned allomorphs of a single marker. However, Rahajarizafy (1960) notes that there are a handful of verbs which
+can take either suffix, with a concomitant difference in argument structure (see
+Pearson 2001 for discussion). Ileana Paul (p.c.) informs me that her consultants
+reject Rahajarizafy's examples, allowing a stem to take -in or -an in the TT form,
+but not both. Since my speaker accepts Rahajarizafy's examples, I will treat -in
+and -an as separate morphemes-while acknowledging that the distinction between them may be disappearing for some speakers.
+3. Notice that in the case of (35), the Asp head is null, rather than surfacing as -in, as expected. To capture this, I posit a morphological filter which blocks
+-in from attaching to a verb stem which already carries a suffix.
+4. Because a clause can contain multiple PPs, I must assume that the higher applicative projection can be recursive. (It is possible that the lower applicative
+projection is recursive as well, although no more than projection will contain a DP
+specifier interpreted as an affected object.)
+
+References
+
+Carnie, Andrew, Heidi Harley, and Elizabeth Pyatt. 2000. VSO ordering as
+raising out of IP? Some evidence from Old Irish. The syntax of verb initial
+languages, ed. by Andrew Carnie and Eithne Guilfoyle, 39-59. Oxford:
+Oxford University Press.
+Chomsky, Noam. 1999. Derivation by phase. MIT Occasional Papers in
+Linguistics 18. Cambridge, MA: MITWPL.
+Chomsky, Noam. 2000. Minimalist inquiries: the framework. Step by step: Essays
+in minimalist syntax in honor of Howard Lasnik, ed. by Roger Martin, David
+Michaels, and Juan Uriagereka, 89-155. Cambridge, MA: MIT Press.
+Chung, Sandra. 1998. The design of agreement: evidence from Chamorro.
+Chicago: University of Chicago Press.
+Chung, Sandra. and James McCloskey. 1987. Government, barriers and smallclauses in Modem Irish. Linguistic Inquiry 18.173-237.
+Dryer, Matthew. 1986. Primary objects, secondary objects, and antidative.
+Language 62.808-845.
+Erwin, Sean. 1996. Quantity and moras: an amicable separation. The structure of
+Malagasy, vol. I, ed. by Matthew Pearson and Ileana Paul, 2-30. Los Angeles:
+UCLA Department of Linguistics.
+Guilfoyle, Eithne. 2000. Tense and N-features in Irish. The syntax of verb initial
+languages, ed. by Andrew Carnie and Eithne Guilfoyle, 61-73. Oxford:
+Oxford University Press.
+
+242
+
+Guilfoyle. Eithne, Henriette Hung, and Lisa Travis. 1992. Spec of IP and Spec of
+VP: two subjects in Austronesian languages. Natural Language and Linguistic
+Theory 10.375-414.
+Keenan, Edward. 1995. Predicate-argument structure in Malagasy. Grammatical
+relations: Theoretical approaches to empirical questions, ed. by Clifford
+Burgess, Katarzyna Dziwirek, and Donna Gerdts, 171-216. Stanford: CSLI.
+Keenan, Edward, and Maria Polinsky. 1998. Malagasy morphology. Handbook of
+morphology, ed. by Andrew Spencer and Arnold Zwicky, 563-623. Oxford:
+Oxford University Press.
+Larson, Richard. 1988. On the double object construction. Linguistic Inquiry
+19.335-392.
+Marantz, Alec. 1993. Implications of asymmetries in double object constructions.
+Theoretical Aspects of Bantu Grammar, ed. by Sam Mchombo, 113-150.
+Stanford: CSLI.
+Paul, Ileana. 1996a. The active marker and nasals in Malagasy. The Structure of
+Malagasy, vol. I, ed. by Matthew Pearson and Ileana Paul, 49-57. Los
+Angeles: UCLA Department of Linguistics.
+Paul, Ileana. 1996b. The Malagasy genitive. The Structure of Malagasy, vol. I, ed.
+by Matthew Pearson and Ileana Paul, 76-91. Los Angeles: UCLA Department
+of Linguistics.
+Paul, Ileana. 1999. Malagasy clause structure. Doctoral dissertation, McGill
+University .
+Pearson, Matt. 2001. The clause structure of Malagasy: A minimalist approach.
+Doctoral dissertation, UCLA.
+Pearson, Matt. to appear. The Malagasy subject/topic as an A' -element. Natural
+Language and Linguistic Theory.
+Rahajarizafy, Antoine. 1960. Essai de grammaire malgache. Antanimena
+Tananarive: Imprimerie Catholique.
+Sportiche, Dominique. 1992. Clitics, voice, and spec-head licensing. GLOW
+Newsletter 28.46-47.
+Travis, Lisa. 1991. Derived objects, inner aspect, and the structure ofVP. Paper
+presented at NELS 22.
+Travis, Lisa. 1994. Event phrase and a theory of functional categories.
+Proceedings of the 1994 Annual Conference of the Canadian Linguistics
+Association, ed. by Pllivi Koskinen, 559-569. Toronto: University of Toronto.
+Matt Pearson
+Linguistics Program, Reed College
+3203 SE Woodstock Blvd
+Portland, OR 97202
+USA
+matthew.pearson@reed.edu
+
+243
+
+

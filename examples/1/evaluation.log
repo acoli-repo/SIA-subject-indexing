@@ -1,0 +1,269 @@
+Properties :
+PdfTrainingRootDir	/u02/oradata/tmp/acoli-training/files
+KeywordMappingFile	/u02/oradata/tmp/acoli-training/remap-indexTerms/subjects-extract.tsv
+KeywordVectorDir	/home/debian7/Arbeitsfläche/keyvectors
+EmbeddingsDir		/u02/oradata/tmp/fasttext
+KeywordMinDocSupport		5
+
+Reading embeddings from : /u02/oradata/tmp/fasttext/wiki.multi.en.vec ...
+lines : 200000
+dimensions : 300
+language : en (check language and adjust code if wrong)
+dimensions : 300
+0
+100000
+200000
+OK
+en 300
+Reading embeddings from : /u02/oradata/tmp/fasttext/wiki.multi.pt.vec ...
+lines : 200000
+dimensions : 300
+language : pt (check language and adjust code if wrong)
+dimensions : 300
+0
+100000
+200000
+OK
+pt 300
+Reading embeddings from : /u02/oradata/tmp/fasttext/wiki.multi.de.vec ...
+lines : 200000
+dimensions : 300
+language : de (check language and adjust code if wrong)
+dimensions : 300
+0
+100000
+200000
+OK
+de 300
+Reading embeddings from : /u02/oradata/tmp/fasttext/wiki.multi.hr.vec ...
+lines : 200000
+dimensions : 300
+language : hr (check language and adjust code if wrong)
+dimensions : 300
+0
+100000
+200000
+OK
+hr 300
+/home/debian7/Arbeitsfläche/11237511/ZASPiL_34_2004_16_Pearson.pdf
+pdftotext /home/debian7/Arbeitsfläche/11237511/ZASPiL_34_2004_16_Pearson.pdf /home/debian7/Arbeitsfläche/11237511/ZASPiL_34_2004_16_Pearson.txt
+ok
+
+en 0.9999960243618844
+Found language : en in file /home/debian7/Arbeitsfläche/11237511/ZASPiL_34_2004_16_Pearson.pdf
+Vocabulary size : 1412
+Matched vocabulary size : 773
+Original keywords (only for testing results for training PDFs):
+1 Morphosyntax
+2 Malagassi-Sprache
+3 Generative Transformationsgrammatik
+4 Grammatikforschung
+5 Syntax
+6 Transitivität
+7 Genus verbi
+8 Thematische Relation
+Keyword distances for /home/debian7/Arbeitsfläche/11237511/ZASPiL_34_2004_16_Pearson_773_en.vec :
+Top 100
+1	Malagassi-Sprache_6_.vec
+0.9963083738319014
+2	Koreanisch_7_.vec
+0.9947073100231976
+3	Griechisch_11_.vec
+0.9942830035101442
+4	Morphosyntax_7_.vec
+0.9940931770807091
+5	Neugriechisch_7_.vec
+0.9940499875433845
+6	Transitivität_6_.vec
+0.9937012922219151
+7	Interrogativsatz_10_.vec
+0.9934187909631179
+8	Generative Transformationsgrammatik_26_.vec
+0.9933553318783058
+9	Prosodie_26_.vec
+0.9930059152662147
+10	Kasus_8_.vec
+0.9926643920171131
+11	Relativsatz_23_.vec
+0.9926130346856425
+12	Oberflächenstruktur <Linguistik>_7_.vec
+0.9925990226263168
+13	Tiefenstruktur_7_.vec
+0.9925990226263168
+14	Bantusprachen_18_.vec
+0.9925054507219928
+15	Valenz <Linguistik>_9_.vec
+0.9923483576082992
+16	Tibetobirmanische Sprachen_20_.vec
+0.9921432627459954
+17	Silbe_9_.vec
+0.9921213736373046
+18	Nungisch_13_.vec
+0.9919142940886974
+19	Klitisierung_9_.vec
+0.9917962909745275
+20	Nominalphrase_7_.vec
+0.9917614250689919
+21	Wortstellung_27_.vec
+0.9915707241570143
+22	Optimalitätstheorie_25_.vec
+0.9910959865055435
+23	Topik_11_.vec
+0.9909974130303739
+24	Intonation <Linguistik>_28_.vec
+0.9908083696505553
+25	Pronomen_13_.vec
+0.9906216903436516
+26	Funktionale Kategorie_6_.vec
+0.9905701834332702
+27	Multicomponent Tree Adjoining Grammar_8_.vec
+0.9904093895045875
+28	Syntax_347_.vec
+0.9901694195189948
+29	Morphologie_135_.vec
+0.9897029407703111
+30	Morphologie_136_.vec
+0.9896997162695894
+31	Referenzidentität_11_.vec
+0.9896117573017585
+32	Aspekt_10_.vec
+0.9894885117588134
+33	Spezifität_6_.vec
+0.9893023253650569
+34	Niederländisch_7_.vec
+0.9892729437170837
+35	Grammatiktheorie_10_.vec
+0.9892596926632148
+36	Computerlinguistik_95_.vec
+0.9892336646415609
+37	Aspekt <Linguistik>_17_.vec
+0.9891719488788472
+38	Grammatikforschung_150_.vec
+0.9890441944469311
+39	Informationsstruktur_34_.vec
+0.9890423824020682
+40	Verb_27_.vec
+0.9890416142333608
+41	Kontrastive Linguistik_98_.vec
+0.9890388733137757
+42	Sprachtypologie_90_.vec
+0.9889847520423051
+43	Kindersprache_12_.vec
+0.9888683517579205
+44	Chewa-Sprache_7_.vec
+0.9887268330275998
+45	Syntaktische Analyse_9_.vec
+0.9886534878622455
+46	Bulgarisch_7_.vec
+0.9885216345370669
+47	Anapher <Syntax>_7_.vec
+0.9884019569954147
+48	Phonologie_69_.vec
+0.9883146681129342
+49	Rumänisch_6_.vec
+0.9882802075882737
+50	Spracherwerb_45_.vec
+0.9881017574160802
+51	Adjunkt <Linguistik>_10_.vec
+0.9880572016730099
+52	Präsupposition_6_.vec
+0.9880557036388472
+53	Retroflex_8_.vec
+0.9879985650140131
+54	Phonetik_46_.vec
+0.9879959992070388
+55	Phonetik@Phonologie_175_.vec
+0.9879622030742619
+56	Adverb_16_.vec
+0.9879202560200767
+57	Perfekt_6_.vec
+0.9877290362710898
+58	Japanisch_19_.vec
+0.9877249475432656
+59	Nebensatz_7_.vec
+0.9875995064040572
+60	Sinotibetische Sprachen_31_.vec
+0.9871843127863649
+61	Prädikat_22_.vec
+0.9871393901053689
+62	Sprachverstehen_11_.vec
+0.987109065181393
+63	Topikalisierung_11_.vec
+0.9870766322824996
+64	Kontrastive Syntax_8_.vec
+0.9870632525526086
+65	Vokal_12_.vec
+0.9870143550170141
+66	Slawische Sprachen_13_.vec
+0.986424055395897
+67	Palatalisierung_6_.vec
+0.9862985682576798
+68	Französisch_8_.vec
+0.9855474812075747
+69	Personalpronomen_6_.vec
+0.9854800402901412
+70	Lexikologie_49_.vec
+0.985353963583266
+71	Kontrastive Phonetik_6_.vec
+0.9852811167072417
+72	Quantitative Linguistik_13_.vec
+0.9852059233299123
+73	Psycholinguistik@Kognitive Linguistik_26_.vec
+0.9848103964676903
+74	Pragmatik_28_.vec
+0.9847725240994838
+75	Drung_6_.vec
+0.9847437348735655
+76	Extraposition_7_.vec
+0.9843349873864641
+77	syntax_7_.vec
+0.9839771410878028
+78	Grammatik_90_.vec
+0.9839734630018127
+79	Nominalisierung_15_.vec
+0.9838772237620146
+80	Genitiv_6_.vec
+0.9836949592765921
+81	Russisch_25_.vec
+0.9836719400897538
+82	Morphologie <Linguistik>_16_.vec
+0.9836537598409136
+83	Pragmalinguistik@Kommunikationsforschung_84_.vec
+0.983046527203594
+84	Chinesisch_20_.vec
+0.983042918512292
+85	Verschlusslaut_6_.vec
+0.9826639055978018
+86	Sprachstatistik_8_.vec
+0.9826139957465422
+87	Negation_9_.vec
+0.9823802222210362
+88	Deutsch_351_.vec
+0.9823263058605296
+89	Hilfsverb_7_.vec
+0.9823140912177029
+90	Artikulation_16_.vec
+0.9820849249898237
+91	Sprachtheorie_13_.vec
+0.9820217183833417
+92	Thema-Rhema-Gliederung_33_.vec
+0.9820200675813886
+93	Mittelenglisch_6_.vec
+0.9818198475125729
+94	Methodologie_6_.vec
+0.9813584014608047
+95	Plural_6_.vec
+0.9813360486983354
+96	Korpus <Linguistik>_24_.vec
+0.9809232855633596
+97	Spanisch_6_.vec
+0.9808700491580564
+98	Italienisch_9_.vec
+0.9806460249257348
+99	Türkisch_21_.vec
+0.9806390225301488
+100	Studien_131_.vec
+0.9802571139372562
+101	Sprachwandel_24_.vec
+0.9802038449835694
+
